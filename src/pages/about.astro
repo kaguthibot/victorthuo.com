@@ -1,10 +1,16 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+	{ name: 'Home', url: 'https://victorthuo.com' },
+	{ name: 'About', url: 'https://victorthuo.com/about' },
+];
 ---
 
 <BaseLayout
 	title="About – Victor Thuo"
 	description="Design leader, behavioral strategist, and builder of experiences that drive business outcomes."
+	breadcrumbs={breadcrumbs}
 >
 	<!-- Hero Section -->
 	<section class="py-20 reveal">

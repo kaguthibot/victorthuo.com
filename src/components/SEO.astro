@@ -1,10 +1,19 @@
 ---
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   canonicalURL?: URL | string;
   type?: 'website' | 'article';
+  publishDate?: Date;
+  modifiedDate?: Date;
+  tags?: string[];
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -13,11 +22,26 @@ const {
   image = '/og-image.png',
   canonicalURL = 'https://victorthuo.com',
   type = 'website',
+  publishDate,
+  modifiedDate,
+  tags = [],
+  breadcrumbs = [],
 } = Astro.props;
 
 const siteTitle = 'Victor Thuo | Experience Design & Product Strategy';
 const resolvedImage = image.startsWith('http') ? image : `https://victorthuo.com${image}`;
 const resolvedCanonical = canonicalURL instanceof URL ? canonicalURL.toString() : canonicalURL;
+
+const breadcrumbSchema = breadcrumbs.length > 0 ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url,
+  })),
+}) : null;
 ---
 
 <link rel="canonical" href={resolvedCanonical} />
@@ -30,7 +54,24 @@ const resolvedCanonical = canonicalURL instanceof URL ? canonicalURL.toString() 
 <meta property="og:url" content={resolvedCanonical} />
 <meta property="og:locale" content="en_US" />
 
+{type === 'article' && publishDate && (
+  <meta property="article:published_time" content={publishDate.toISOString()} />
+)}
+{type === 'article' && modifiedDate && (
+  <meta property="article:modified_time" content={modifiedDate.toISOString()} />
+)}
+{type === 'article' && (
+  <meta property="article:author" content="https://victorthuo.com/about" />
+)}
+{type === 'article' && tags.map((tag) => (
+  <meta property="article:tag" content={tag} />
+))}
+
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={resolvedImage} />
+
+{breadcrumbSchema && (
+  <script type="application/ld+json" set:html={breadcrumbSchema} />
+)}

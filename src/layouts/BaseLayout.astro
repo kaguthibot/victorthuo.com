@@ -4,11 +4,20 @@ import Footer from '@/components/Footer.astro';
 import SEO from '@/components/SEO.astro';
 import '@/styles/global.css';
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  publishDate?: Date;
+  modifiedDate?: Date;
+  tags?: string[];
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -16,6 +25,10 @@ const {
   description = 'Design leadership, behavioral strategy, and digital products that drive meaningful impact.',
   image = '/og-image.png',
   type = 'website',
+  publishDate,
+  modifiedDate,
+  tags = [],
+  breadcrumbs = [],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -37,14 +50,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="author" content="Victor Thuo" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Victor Thuo — Perspectives" href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap"
       rel="stylesheet"
     />
-    <SEO {title} {description} {image} {canonicalURL} {type} />
+    <SEO {title} {description} {image} {canonicalURL} {type} {publishDate} {modifiedDate} {tags} {breadcrumbs} />
     <title>{title}</title>
   </head>
   <body>
@@ -62,7 +77,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "@type": "Person",
         "name": "Victor Thuo",
         "url": "https://victorthuo.com",
+        "image": "https://victorthuo.com/og-image.png",
         "jobTitle": "Design Leader & Behavioral Strategist",
+        "description": "Design, innovation and digital strategy expert driving impact through experience design, behavior change, AI and digital transformation.",
+        "knowsAbout": ["Experience Design", "Behavioral Design", "Digital Strategy", "Change Management", "Product Adoption", "Enterprise UX"],
         "sameAs": [
           "https://www.linkedin.com/in/victorthuo/"
         ]

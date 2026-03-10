@@ -7,11 +7,17 @@ const allWork = await getCollection('work');
 const sortedWork = allWork.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
 
 const categories = ['All', 'Experience Design', 'Digital Strategy', 'Behavior Change'];
+
+const breadcrumbs = [
+	{ name: 'Home', url: 'https://victorthuo.com' },
+	{ name: 'Work', url: 'https://victorthuo.com/work' },
+];
 ---
 
 <BaseLayout
 	title="Work – Victor Thuo"
 	description="Case studies in experience design, digital strategy, and behavior change."
+	breadcrumbs={breadcrumbs}
 >
 	<!-- Page Header -->
 	<section class="py-20 reveal">

@@ -7,11 +7,17 @@ const allPerspectives = await getCollection('perspectives');
 const perspectives = allPerspectives
 	.filter((entry) => !entry.data.draft)
 	.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const breadcrumbs = [
+	{ name: 'Home', url: 'https://victorthuo.com' },
+	{ name: 'Perspectives', url: 'https://victorthuo.com/perspectives' },
+];
 ---
 
 <BaseLayout
 	title="Perspectives – Victor Thuo"
 	description="Thoughts on design leadership, behavioral strategy, and building products people actually use."
+	breadcrumbs={breadcrumbs}
 >
 	<!-- Page Header -->
 	<section class="py-20 reveal">
