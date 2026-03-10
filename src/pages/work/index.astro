@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CaseStudyCard from '@/components/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const allWork = await getCollection('work');
+const sortedWork = allWork.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+
+const categories = ['All', 'Experience Design', 'Digital Strategy', 'Behavior Change'];
+---
+
+<BaseLayout
+	title="Work – Victor Thuo"
+	description="Case studies in experience design, digital strategy, and behavior change."
+>
+	<!-- Page Header -->
+	<section class="py-20 reveal">
+		<div class="max-w-6xl mx-auto px-6">
+			<p class="label-arch text-silver-400 mb-4">Portfolio</p>
+			<h1 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-6">
+				Work
+			</h1>
+			<p class="text-lg text-silver-400 font-sans max-w-2xl" style="font-weight: 300;">
+				Case studies in experience design, digital strategy, and behavior change.
+			</p>
+		</div>
+	</section>
+
+	<!-- Category Filters -->
+	<section class="pb-12 reveal">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="flex flex-wrap gap-3">
+				{categories.map((category) => (
+					<button
+						data-category={category}
+						class={`filter-btn px-4 py-2 text-sm font-sans font-medium rounded-sm transition-all ${
+							category === 'All'
+								? 'bg-silver-900 dark:bg-silver-100 text-white dark:text-silver-900'
+								: 'bg-silver-100 dark:bg-silver-900 text-silver-900 dark:text-silver-100 hover:bg-silver-200 dark:hover:bg-silver-800'
+						}`}
+					>
+						{category}
+					</button>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Work Grid -->
+	<section class="pb-24 reveal">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16" id="workGrid">
+				{sortedWork.map((work) => (
+					<div data-category={work.data.category}>
+						<CaseStudyCard work={work} />
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<script>
+	const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+	const cards = document.querySelectorAll<HTMLElement>('#workGrid [data-category]');
+
+	const activeClasses = ['bg-silver-900', 'dark:bg-silver-100', 'text-white', 'dark:text-silver-900'];
+	const inactiveClasses = ['bg-silver-100', 'dark:bg-silver-900', 'text-silver-900', 'dark:text-silver-100'];
+
+	buttons.forEach((button) => {
+		button.addEventListener('click', () => {
+			const category = button.getAttribute('data-category');
+
+			buttons.forEach((btn) => {
+				btn.classList.remove(...activeClasses);
+				btn.classList.add(...inactiveClasses);
+			});
+			button.classList.remove(...inactiveClasses);
+			button.classList.add(...activeClasses);
+
+			cards.forEach((card) => {
+				const cardCategory = card.getAttribute('data-category');
+				if (category === 'All' || cardCategory === category) {
+					card.classList.remove('hidden');
+				} else {
+					card.classList.add('hidden');
+				}
+			});
+		});
+	});
+</script>

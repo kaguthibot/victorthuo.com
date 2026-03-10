@@ -1,0 +1,100 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const allWork = await getCollection('work');
+	return allWork.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+interface Props {
+	entry: CollectionEntry<'work'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Get all work sorted by order to find next project
+const allWork = await getCollection('work');
+const sortedWork = allWork.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+const currentIndex = sortedWork.findIndex((w) => w.slug === entry.slug);
+const nextProject = currentIndex < sortedWork.length - 1 ? sortedWork[currentIndex + 1] : sortedWork[0];
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+	<article>
+		<!-- Back Link -->
+		<div class="py-8 reveal">
+			<div class="max-w-4xl mx-auto px-6">
+				<a href="/work" class="inline-flex items-center text-silver-500 dark:text-silver-400 hover:text-silver-800 dark:hover:text-silver-200 font-sans transition-colors">
+					← Work
+				</a>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header class="py-12 reveal">
+			<div class="max-w-4xl mx-auto px-6">
+				<!-- Category Tag -->
+				<p class="label-arch mb-4">
+					{entry.data.category}
+				</p>
+
+				<!-- Title -->
+				<h1 class="text-5xl lg:text-6xl font-display font-light text-silver-900 dark:text-silver-100 mb-6 leading-tight">
+					{entry.data.title}
+				</h1>
+
+				<!-- Summary -->
+				<p class="text-lg text-silver-400 font-sans leading-relaxed max-w-2xl font-light">
+					{entry.data.summary}
+				</p>
+			</div>
+		</header>
+
+		<!-- Metrics -->
+		{entry.data.metrics && entry.data.metrics.length > 0 && (
+			<section class="py-12 border-y border-silver-200 dark:border-silver-800 reveal">
+				<div class="max-w-4xl mx-auto px-6">
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+						{entry.data.metrics.map((metric: string) => (
+							<div class="text-center py-8 px-6 bg-silver-50 dark:bg-silver-900 rounded-sm border border-silver-200 dark:border-silver-800">
+								<div class="text-sm text-silver-700 dark:text-silver-200 font-medium">{metric}</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+		)}
+
+		<!-- Content -->
+		<section class="py-16 reveal">
+			<div class="max-w-4xl mx-auto px-6 prose prose-lg">
+				<Content />
+			</div>
+		</section>
+
+		<!-- Next Project -->
+		<section class="py-16 border-t border-silver-200 dark:border-silver-800 reveal">
+			<div class="max-w-4xl mx-auto px-6">
+				<p class="label-arch mb-4">
+					Next project
+				</p>
+				<a
+					href={`/work/${nextProject.slug}`}
+					class="group block"
+				>
+					<h2 class="text-3xl font-display font-light text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors">
+						{nextProject.data.title}
+					</h2>
+					<p class="text-silver-500 dark:text-silver-400 font-sans mt-2">
+						{nextProject.data.category}
+					</p>
+				</a>
+			</div>
+		</section>
+	</article>
+</BaseLayout>

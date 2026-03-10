@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgDL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4f4f5"/>
+      <stop offset="100%" stop-color="#e0e0e2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgDL)"/>
+  <!-- Abstract money/coin circles -->
+  <circle cx="400" cy="350" r="140" fill="none" stroke="#c4a080" stroke-width="2" stroke-opacity="0.25"/>
+  <circle cx="400" cy="350" r="120" fill="none" stroke="#c8c8cb" stroke-width="1" stroke-opacity="0.2"/>
+  <circle cx="400" cy="350" r="100" fill="#c4a080" opacity="0.04"/>
+  <!-- Dollar/currency lines inside circle -->
+  <g opacity="0.2">
+    <line x1="400" y1="270" x2="400" y2="430" stroke="#a0785a" stroke-width="1.5"/>
+    <path d="M370,300 Q400,280 430,300 Q400,320 370,300" fill="none" stroke="#a0785a" stroke-width="1.2"/>
+    <path d="M370,390 Q400,410 430,390 Q400,370 370,390" fill="none" stroke="#a0785a" stroke-width="1.2"/>
+  </g>
+  <!-- Warning triangle -->
+  <g transform="translate(750, 320)" opacity="0.3">
+    <polygon points="0,-100 90,60 -90,60" fill="none" stroke="#a0785a" stroke-width="2.5"/>
+    <line x1="0" y1="-50" x2="0" y2="15" stroke="#a0785a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="0" cy="35" r="4" fill="#a0785a"/>
+  </g>
+  <!-- Downward trend line -->
+  <polyline points="200,250 350,260 500,300 600,380 700,450 850,530 950,580" fill="none" stroke="#a0785a" stroke-width="1.5" stroke-opacity="0.2"/>
+  <polyline points="200,250 350,260 500,300 600,380 700,450 850,530 950,580" fill="none" stroke="#c4a080" stroke-width="4" stroke-opacity="0.06"/>
+  <!-- Data points on trend -->
+  <circle cx="350" cy="260" r="4" fill="#c8c8cb" opacity="0.3"/>
+  <circle cx="500" cy="300" r="4" fill="#c8c8cb" opacity="0.3"/>
+  <circle cx="700" cy="450" r="5" fill="#a0785a" opacity="0.25"/>
+  <circle cx="850" cy="530" r="5" fill="#a0785a" opacity="0.25"/>
+  <!-- Abstract broken/cracked lines suggesting default -->
+  <g opacity="0.12">
+    <line x1="550" y1="200" x2="580" y2="230" stroke="#a0a0a5" stroke-width="1.5"/>
+    <line x1="580" y1="230" x2="570" y2="260" stroke="#a0a0a5" stroke-width="1.5"/>
+    <line x1="570" y1="260" x2="600" y2="280" stroke="#a0a0a5" stroke-width="1.5"/>
+    <line x1="900" y1="180" x2="920" y2="210" stroke="#a0a0a5" stroke-width="1.5"/>
+    <line x1="920" y1="210" x2="910" y2="240" stroke="#a0a0a5" stroke-width="1.5"/>
+  </g>
+  <!-- Grid background -->
+  <g opacity="0.06">
+    <line x1="200" y1="150" x2="200" y2="650" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="400" y1="150" x2="400" y2="650" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="600" y1="150" x2="600" y2="650" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="800" y1="150" x2="800" y2="650" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="1000" y1="150" x2="1000" y2="650" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="150" y1="200" x2="1050" y2="200" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="150" y1="350" x2="1050" y2="350" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="150" y1="500" x2="1050" y2="500" stroke="#c8c8cb" stroke-width="1"/>
+    <line x1="150" y1="650" x2="1050" y2="650" stroke="#c8c8cb" stroke-width="1"/>
+  </g>
+  <!-- Ambient -->
+  <circle cx="150" cy="180" r="3" fill="#c4a080" opacity="0.2"/>
+  <circle cx="1050" cy="200" r="4" fill="#a0a0a5" opacity="0.15"/>
+  <!-- Title -->
+  <text x="600" y="760" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#a0a0a5" letter-spacing="4" opacity="0.6">DEFAULTED DIGITAL LOANS</text>
+</svg>

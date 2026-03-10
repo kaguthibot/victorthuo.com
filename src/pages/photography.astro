@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Photography – Victor Thuo"
+	description="A creative outlet — observing light, space, and the human experience."
+>
+	<!-- Page Header -->
+	<section class="py-20 reveal">
+		<div class="max-w-6xl mx-auto px-6">
+			<h1 class="text-5xl lg:text-6xl font-display font-light text-silver-900 dark:text-silver-100 mb-6">
+				Photography
+			</h1>
+			<p class="text-lg text-silver-400 font-sans max-w-2xl" style="font-weight: 300;">
+				A creative outlet — observing light, space, and the human experience.
+			</p>
+		</div>
+	</section>
+
+	<!-- Masonry Grid -->
+	<section class="pb-24 reveal">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] gap-4">
+				<div class="md:row-span-2 rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
+					<img src="/images/gallery/photo-1.svg" alt="Urban architecture with geometric shadows" loading="lazy" class="w-full h-full object-cover" />
+				</div>
+				<div class="rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
+					<img src="/images/gallery/photo-2.svg" alt="Street scene with natural light" loading="lazy" class="w-full h-full object-cover" />
+				</div>
+				<div class="rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
+					<img src="/images/gallery/photo-3.svg" alt="Abstract textures and patterns" loading="lazy" class="w-full h-full object-cover" />
+				</div>
+				<div class="md:col-span-2 rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
+					<img src="/images/gallery/photo-4.svg" alt="Landscape with dramatic sky" loading="lazy" class="w-full h-full object-cover" />
+				</div>
+				<div class="rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
+					<img src="/images/gallery/photo-5.svg" alt="Close-up detail of natural forms" loading="lazy" class="w-full h-full object-cover" />
+				</div>
+				<div class="md:col-span-2 md:row-span-2 rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
+					<img src="/images/gallery/photo-6.svg" alt="Aerial perspective of urban grid" loading="lazy" class="w-full h-full object-cover" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Note -->
+	<section class="py-16 border-t border-silver-200 dark:border-silver-800 reveal">
+		<div class="max-w-6xl mx-auto px-6 text-center">
+			<p class="text-silver-400 font-sans text-lg" style="font-weight: 300;">
+				Photography section is being curated. Check back soon.
+			</p>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <radialGradient id="bgP6" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#e0e0e2"/>
+    </radialGradient>
+    <linearGradient id="lightBeam" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#c4a080" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#c4a080" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgP6)"/>
+  <!-- Abstract darkroom / exposure theme -->
+  <!-- Large exposure circle -->
+  <circle cx="600" cy="380" r="250" fill="none" stroke="#e0e0e2" stroke-width="1"/>
+  <circle cx="600" cy="380" r="248" fill="none" stroke="#c8c8cb" stroke-width="0.5" stroke-dasharray="3 5"/>
+  <!-- Concentric exposure rings -->
+  <circle cx="600" cy="380" r="200" fill="none" stroke="#c8c8cb" stroke-width="0.8" stroke-opacity="0.25"/>
+  <circle cx="600" cy="380" r="150" fill="none" stroke="#c8c8cb" stroke-width="0.8" stroke-opacity="0.3"/>
+  <circle cx="600" cy="380" r="100" fill="none" stroke="#c4a080" stroke-width="0.8" stroke-opacity="0.25"/>
+  <circle cx="600" cy="380" r="50" fill="none" stroke="#c4a080" stroke-width="1" stroke-opacity="0.3"/>
+  <circle cx="600" cy="380" r="20" fill="#c4a080" opacity="0.08"/>
+  <!-- Light beam from above -->
+  <polygon points="520,0 680,0 650,380 550,380" fill="url(#lightBeam)"/>
+  <!-- Exposure triangle markers -->
+  <g opacity="0.15">
+    <!-- ISO -->
+    <g transform="translate(350, 200)">
+      <polygon points="0,-30 26,15 -26,15" fill="none" stroke="#a0785a" stroke-width="1.5"/>
+      <rect x="-15" y="25" width="30" height="2" rx="1" fill="#a0a0a5"/>
+    </g>
+    <!-- Aperture -->
+    <g transform="translate(850, 200)">
+      <polygon points="0,-30 26,15 -26,15" fill="none" stroke="#a0785a" stroke-width="1.5"/>
+      <rect x="-15" y="25" width="30" height="2" rx="1" fill="#a0a0a5"/>
+    </g>
+    <!-- Shutter Speed -->
+    <g transform="translate(600, 680)">
+      <polygon points="0,-30 26,15 -26,15" fill="none" stroke="#a0785a" stroke-width="1.5"/>
+      <rect x="-15" y="25" width="30" height="2" rx="1" fill="#a0a0a5"/>
+    </g>
+  </g>
+  <!-- Connecting lines between triangle points -->
+  <line x1="350" y1="200" x2="850" y2="200" stroke="#c8c8cb" stroke-width="0.5" stroke-dasharray="6 6" stroke-opacity="0.15"/>
+  <line x1="850" y1="200" x2="600" y2="680" stroke="#c8c8cb" stroke-width="0.5" stroke-dasharray="6 6" stroke-opacity="0.15"/>
+  <line x1="600" y1="680" x2="350" y2="200" stroke="#c8c8cb" stroke-width="0.5" stroke-dasharray="6 6" stroke-opacity="0.15"/>
+  <!-- Histogram bars at bottom-left -->
+  <g transform="translate(100, 550)" opacity="0.1">
+    <rect x="0" y="40" width="8" height="30" fill="#a0a0a5"/>
+    <rect x="12" y="25" width="8" height="45" fill="#a0a0a5"/>
+    <rect x="24" y="15" width="8" height="55" fill="#c8c8cb"/>
+    <rect x="36" y="5" width="8" height="65" fill="#c8c8cb"/>
+    <rect x="48" y="0" width="8" height="70" fill="#c4a080"/>
+    <rect x="60" y="10" width="8" height="60" fill="#c4a080"/>
+    <rect x="72" y="20" width="8" height="50" fill="#c8c8cb"/>
+    <rect x="84" y="30" width="8" height="40" fill="#c8c8cb"/>
+    <rect x="96" y="35" width="8" height="35" fill="#a0a0a5"/>
+    <rect x="108" y="45" width="8" height="25" fill="#a0a0a5"/>
+  </g>
+  <!-- Histogram bars at bottom-right -->
+  <g transform="translate(980, 550)" opacity="0.1">
+    <rect x="0" y="35" width="8" height="35" fill="#a0a0a5"/>
+    <rect x="12" y="20" width="8" height="50" fill="#c8c8cb"/>
+    <rect x="24" y="10" width="8" height="60" fill="#c4a080"/>
+    <rect x="36" y="0" width="8" height="70" fill="#c4a080"/>
+    <rect x="48" y="5" width="8" height="65" fill="#c8c8cb"/>
+    <rect x="60" y="15" width="8" height="55" fill="#c8c8cb"/>
+    <rect x="72" y="30" width="8" height="40" fill="#a0a0a5"/>
+    <rect x="84" y="40" width="8" height="30" fill="#a0a0a5"/>
+    <rect x="96" y="50" width="8" height="20" fill="#a0a0a5"/>
+  </g>
+  <!-- Ambient particles -->
+  <circle cx="200" cy="300" r="3" fill="#c4a080" opacity="0.15"/>
+  <circle cx="1000" cy="350" r="4" fill="#a0a0a5" opacity="0.12"/>
+  <circle cx="300" cy="600" r="2" fill="#a0a0a5" opacity="0.18"/>
+  <circle cx="900" cy="580" r="3" fill="#c4a080" opacity="0.15"/>
+  <!-- Title -->
+  <text x="600" y="760" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#a0a0a5" letter-spacing="4" opacity="0.6">PHOTOGRAPHY</text>
+</svg>

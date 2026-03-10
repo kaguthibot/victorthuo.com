@@ -1,0 +1,187 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="About – Victor Thuo"
+	description="Design leader, behavioral strategist, and builder of experiences that drive business outcomes."
+>
+	<!-- Hero Section -->
+	<section class="py-20 reveal">
+		<div class="max-w-4xl mx-auto px-6">
+			<p class="label-arch text-silver-400 mb-4">About</p>
+			<h1 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-4">
+				Victor Thuo
+			</h1>
+			<p class="text-2xl text-silver-400 font-display" style="font-weight: 300;">
+				Experience Design & Product Strategy
+			</p>
+		</div>
+	</section>
+
+	<!-- Bio Section -->
+	<section class="py-16 reveal">
+		<div class="max-w-4xl mx-auto px-6">
+			<p class="label-arch text-silver-400 mb-4">Background</p>
+			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
+				Background
+			</h2>
+			<div class="space-y-6 text-silver-400 font-sans leading-relaxed" style="font-weight: 300;">
+				<p>
+					I am a design, innovation and digital strategy expert with nearly a decade of experience driving impact through design innovation. My work spans enterprise software, healthcare, financial services, automotive, and consumer technology — helping organizations navigate complex digital transformations where adoption is critical and the stakes are high.
+				</p>
+
+				<p>
+					I have a proven ability to lead and manage complex design, digital transformation, and change management engagements across industries. My path started in product design but quickly evolved as I learned that the best design is worthless if people don't understand it, trust it, or change their behavior to use it. This led me into behavioral strategy — applying principles from behavioral economics, change management, and organizational psychology to solve the hardest adoption problems in enterprise environments.
+				</p>
+
+				<p>
+					I am skilled in building strong client relationships, fostering collaboration across teams, and driving impactful solutions that deliver tangible business value. I champion the internal and external sharing of best practices within the field of behavioral design — from running a Change Management Center of Excellence to writing about the intersection of behavior science and product design.
+				</p>
+
+				<p>
+					Today, I bridge the gap between what organizations build and what their users actually adopt. My focus is on solving the business problem through design — connecting creative innovation, behavior change, and business value creation.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Design Philosophy -->
+	<section class="py-16 reveal">
+		<div class="max-w-4xl mx-auto px-6">
+			<p class="label-arch text-silver-400 mb-4">Philosophy</p>
+			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-12">
+				Design Philosophy
+			</h2>
+			<div class="space-y-10">
+				<div>
+					<h3 class="text-xl font-display font-semibold text-silver-900 dark:text-silver-100 mb-3">
+						Design must speak the language of business.
+					</h3>
+					<p class="text-silver-400 font-sans leading-relaxed" style="font-weight: 300;">
+						Beautiful design that doesn't drive business outcomes is art, not strategy. Every decision I make—from information architecture to interaction patterns—is tied to measurable impact. I work in metrics: adoption rates, error reduction, time-to-value, customer satisfaction. Design succeeds when the business succeeds.
+					</p>
+				</div>
+
+				<div>
+					<h3 class="text-xl font-display font-semibold text-silver-900 dark:text-silver-100 mb-3">
+						Behavior change is the highest-leverage design outcome.
+					</h3>
+					<p class="text-silver-400 font-sans leading-relaxed" style="font-weight: 300;">
+						You can redesign a workflow beautifully, but if people keep doing it the old way, you've failed. I build design systems grounded in behavioral science—understanding how people actually make decisions, what creates friction, and how to nudge adoption. This is especially critical in enterprise environments where changing ingrained behaviors is the real challenge.
+					</p>
+				</div>
+
+				<div>
+					<h3 class="text-xl font-display font-semibold text-silver-900 dark:text-silver-100 mb-3">
+						Enterprise UX is consumer UX at scale, not a lesser version of it.
+					</h3>
+					<p class="text-silver-400 font-sans leading-relaxed" style="font-weight: 300;">
+						The complexity is real, but it's not an excuse for poor design. Enterprise users deserve clarity, elegance, and delight just as much as consumer users. The difference is in scope and constraint—but that's where strategy comes in. I design with both sophistication and simplicity, because enterprise users are also humans.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- How I Work -->
+	<section class="py-16 border-y border-silver-200 dark:border-silver-800 reveal">
+		<div class="max-w-4xl mx-auto px-6">
+			<p class="label-arch text-silver-400 mb-4">Process</p>
+			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
+				How I Work
+			</h2>
+			<div class="space-y-6 text-silver-400 font-sans leading-relaxed" style="font-weight: 300;">
+				<p>
+					I'm a collaborative partner, not a vendor. I start every engagement by deeply understanding the business context—what problem are we actually solving? Who are the stakeholders? What does success look like? I work closely with product, engineering, research, and leadership to ensure design is informed by data and grounded in strategy.
+				</p>
+
+				<p>
+					My toolkit combines user research, behavioral analysis, design thinking, and enterprise methodology. I believe in moving fast but thoughtfully—testing assumptions early, validating with real users, and iterating based on feedback. I'm equally comfortable designing from scratch or critiquing and refining existing work.
+				</p>
+
+				<p>
+					But design is only half the battle. I also focus on activation and adoption—strategy around change management, user onboarding, communication, and support. A launch is just the beginning; real success comes when users trust and adopt the new experience.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Sectors -->
+	<section class="py-16 reveal">
+		<div class="max-w-4xl mx-auto px-6">
+			<p class="label-arch text-silver-400 mb-4">Industries</p>
+			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
+				Sectors
+			</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				{['Business Consulting', 'Healthcare', 'Financial Services & FinTech', 'Automotive', 'Consumer Products', 'Enterprise Technology'].map(
+					(sector) => (
+						<div class="border-l border-clay pl-4 py-2">
+							<p class="text-silver-900 dark:text-silver-100 font-sans font-medium">{sector}</p>
+						</div>
+					)
+				)}
+			</div>
+		</div>
+	</section>
+
+	<!-- Recommendations -->
+	<section class="py-16 reveal">
+		<div class="max-w-4xl mx-auto px-6">
+			<p class="label-arch text-silver-400 mb-4">Testimonials</p>
+			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
+				What others say
+			</h2>
+			<div class="space-y-8">
+				<blockquote class="border-l border-clay pl-6 py-4">
+					<p class="text-lg text-silver-400 font-sans mb-2 italic" style="font-weight: 300;">
+						"Victor is a rare design leader who understands business as well as he understands design. He doesn't just design beautiful interfaces—he designs for adoption and impact. Working with him transformed how we think about product strategy."
+					</p>
+					<p class="text-sm font-sans text-silver-600">
+						[Recommendation from LinkedIn — to be added]
+					</p>
+				</blockquote>
+
+				<blockquote class="border-l border-clay pl-6 py-4">
+					<p class="text-lg text-silver-400 font-sans mb-2 italic" style="font-weight: 300;">
+						"Victor brings a strategic lens to every decision, grounded in behavioral research and business acumen. He's as comfortable facilitating executive alignment as he is diving into detailed interaction design. His work directly moved the needle on our key metrics."
+					</p>
+					<p class="text-sm font-sans text-silver-600">
+						[Recommendation from LinkedIn — to be added]
+					</p>
+				</blockquote>
+
+				<blockquote class="border-l border-clay pl-6 py-4">
+					<p class="text-lg text-silver-400 font-sans mb-2 italic" style="font-weight: 300;">
+						"Collaborating with Victor was a masterclass in how to think about enterprise UX. He got the complexity, but never let it compromise the experience. His team loved working with him, and our users noticed the difference immediately."
+					</p>
+					<p class="text-sm font-sans text-silver-600">
+						[Recommendation from LinkedIn — to be added]
+					</p>
+				</blockquote>
+			</div>
+		</div>
+	</section>
+
+	<!-- Connect -->
+	<section class="py-20 border-t border-silver-200 dark:border-silver-800 reveal">
+		<div class="max-w-4xl mx-auto px-6 text-center">
+			<p class="label-arch text-silver-400 mb-4">Contact</p>
+			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
+				Let's talk
+			</h2>
+			<p class="text-silver-400 font-sans mb-6 text-lg" style="font-weight: 300;">
+				Interested in exploring a project together or just want to connect?
+			</p>
+			<a
+				href="https://linkedin.com/in/victorthuo"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-block text-silver-800 dark:text-silver-200 font-sans font-medium border-b-2 border-clay hover:text-clay transition-colors"
+			>
+				Let's connect on LinkedIn →
+			</a>
+		</div>
+	</section>
+</BaseLayout>

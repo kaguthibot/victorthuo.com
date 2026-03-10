@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#f0efed"/>
+
+  <g transform="translate(580, 420)" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="-160" y1="-175" x2="-160" y2="100" stroke="#7c7c82" stroke-width="4"/>
+    <line x1="-160" y1="100" x2="165" y2="100" stroke="#7c7c82" stroke-width="4"/>
+    <path d="M-140 85 C-105 82, -60 78, -20 62 C20 42, 48 5, 72 -45 C90 -82, 108 -125, 145 -170"
+          stroke="#a0785a" stroke-width="6" fill="none"/>
+    <path d="M-140 85 C-105 82, -60 78, -20 62 C20 42, 48 5, 72 -45 C90 -82, 108 -125, 145 -170 L145 100 L-140 100 Z"
+          fill="#a0785a" opacity="0.07"/>
+    <path d="M138 -158 L150 -176 L158 -155" stroke="#a0785a" stroke-width="5" fill="none"/>
+    <g transform="translate(165, -165)">
+      <line x1="0" y1="-14" x2="0" y2="14" stroke="#7d5c42" stroke-width="3"/>
+      <line x1="-14" y1="0" x2="14" y2="0" stroke="#7d5c42" stroke-width="3"/>
+      <line x1="-9" y1="-9" x2="9" y2="9" stroke="#7d5c42" stroke-width="2"/>
+      <line x1="9" y1="-9" x2="-9" y2="9" stroke="#7d5c42" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

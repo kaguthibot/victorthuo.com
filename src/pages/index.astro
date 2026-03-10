@@ -1,0 +1,129 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CaseStudyCard from '@/components/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const allWork = await getCollection('work');
+const featuredWork = allWork
+	.filter((entry) => entry.data.featured === true)
+	.sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
+	.slice(0, 3);
+---
+
+<BaseLayout title="Victor Thuo – Experience Design Strategy, Customer Experience & Behavior Change" description="Design, innovation and digital strategy expert driving impact through experience design, behavior change, AI and digital transformation.">
+	<!-- Hero — centered -->
+	<section class="min-h-[88vh] flex items-center justify-center px-8">
+		<div class="max-w-3xl text-center reveal">
+			<p class="label-arch text-clay mb-8">Design & Strategy</p>
+			<h1 class="text-5xl lg:text-7xl font-display text-silver-950 dark:text-silver-100 leading-[1.08] mb-10">
+				Crafting innovative solutions that drive customer value and transform user experiences.
+			</h1>
+			<p class="text-lg text-silver-400 leading-relaxed mb-12 max-w-xl mx-auto" style="font-weight: 300;">
+				I apply design methods, behavior science and data insights to bridge the gap between customer centricity and business impact.
+			</p>
+			<a href="/work" class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm inline-flex items-center gap-3">
+				View work
+				<span class="w-8 h-px bg-silver-300 inline-block"></span>
+			</a>
+		</div>
+	</section>
+
+	<!-- POV — contained, no full-width color -->
+	<section class="py-20 reveal">
+		<div class="max-w-2xl mx-auto px-8 text-center">
+			<div class="w-8 h-px bg-clay mx-auto mb-8"></div>
+			<p class="text-xl font-display italic text-silver-500 dark:text-silver-400 leading-relaxed" style="font-weight: 400;">
+				I believe design has a business fluency problem — and solving it is the most valuable thing a design leader can do.
+			</p>
+			<div class="w-8 h-px bg-clay mx-auto mt-8"></div>
+		</div>
+	</section>
+
+	<!-- Capabilities — asymmetric grid -->
+	<section class="py-32">
+		<div class="max-w-5xl mx-auto px-8">
+			<div class="text-center mb-20 reveal">
+				<p class="label-arch text-silver-400 mb-4">What I do</p>
+				<h2 class="text-4xl lg:text-5xl font-display text-silver-900 dark:text-silver-100">Capabilities</h2>
+			</div>
+
+			<div class="grid grid-cols-12 gap-6 stagger">
+				<div class="col-span-12 md:col-span-7 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
+					<div class="flex items-baseline justify-between mb-4">
+						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Experience Design</h3>
+						<span class="label-arch text-silver-300">01</span>
+					</div>
+					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
+						Creating intuitive products with seamless interaction experiences that resonate with user needs, increasing satisfaction, product adoption and advancing target business outcomes.
+					</p>
+				</div>
+
+				<div class="col-span-12 md:col-span-5 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
+					<div class="flex items-baseline justify-between mb-4">
+						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Digital Strategy</h3>
+						<span class="label-arch text-silver-300">02</span>
+					</div>
+					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
+						Aligning organizational goals with user expectations across all touchpoints.
+					</p>
+				</div>
+
+				<div class="col-span-12 md:col-span-5 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
+					<div class="flex items-baseline justify-between mb-4">
+						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Behavior Change</h3>
+						<span class="label-arch text-silver-300">03</span>
+					</div>
+					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
+						Applying behavior science to create solutions that drive engagement and positive actions.
+					</p>
+				</div>
+
+				<div class="col-span-12 md:col-span-7 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
+					<div class="flex items-baseline justify-between mb-4">
+						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Product Adoption</h3>
+						<span class="label-arch text-silver-300">04</span>
+					</div>
+					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
+						Developing tailored change management and data-driven insights to facilitate smooth transitions, minimize friction and ultimately accelerate the realization of business value from new initiatives.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Featured Work -->
+	<section class="py-32">
+		<div class="max-w-5xl mx-auto px-8">
+			<div class="text-center mb-20 reveal">
+				<p class="label-arch text-silver-400 mb-4">Case studies</p>
+				<h2 class="text-4xl lg:text-5xl font-display text-silver-900 dark:text-silver-100">Selected work</h2>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 stagger mb-12">
+				{featuredWork.map((work) => (
+					<CaseStudyCard work={work} />
+				))}
+			</div>
+			<div class="text-center">
+				<a href="/work" class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm inline-flex items-center gap-3">
+					View all work
+					<span class="w-8 h-px bg-silver-300 inline-block"></span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="py-32 reveal">
+		<div class="max-w-4xl mx-auto px-8 text-center">
+			<h2 class="text-3xl font-display text-silver-900 dark:text-silver-100 mb-8">Let's connect</h2>
+			<a
+				href="https://linkedin.com/in/victorthuo"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm"
+			>
+				Connect on LinkedIn
+			</a>
+		</div>
+	</section>
+</BaseLayout>

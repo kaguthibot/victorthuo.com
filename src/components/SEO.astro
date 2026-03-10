@@ -1,0 +1,36 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: URL | string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title = 'Victor Thuo | Experience Design & Product Strategy',
+  description = 'Design leadership, behavioral strategy, and digital products that drive meaningful impact.',
+  image = '/og-image.png',
+  canonicalURL = 'https://victorthuo.com',
+  type = 'website',
+} = Astro.props;
+
+const siteTitle = 'Victor Thuo | Experience Design & Product Strategy';
+const resolvedImage = image.startsWith('http') ? image : `https://victorthuo.com${image}`;
+const resolvedCanonical = canonicalURL instanceof URL ? canonicalURL.toString() : canonicalURL;
+---
+
+<link rel="canonical" href={resolvedCanonical} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={resolvedImage} />
+<meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
+<meta property="og:site_name" content={siteTitle} />
+<meta property="og:url" content={resolvedCanonical} />
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={resolvedImage} />

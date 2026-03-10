@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <radialGradient id="bgSW" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#e0e0e2"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgSW)"/>
+  <!-- Music wave forms - central -->
+  <g transform="translate(600, 400)" opacity="0.3">
+    <!-- Wave bars -->
+    <rect x="-280" y="-30" width="8" height="60" rx="4" fill="#c8c8cb"/>
+    <rect x="-260" y="-50" width="8" height="100" rx="4" fill="#c8c8cb"/>
+    <rect x="-240" y="-70" width="8" height="140" rx="4" fill="#c4a080"/>
+    <rect x="-220" y="-40" width="8" height="80" rx="4" fill="#c8c8cb"/>
+    <rect x="-200" y="-90" width="8" height="180" rx="4" fill="#a0785a" opacity="0.7"/>
+    <rect x="-180" y="-55" width="8" height="110" rx="4" fill="#c8c8cb"/>
+    <rect x="-160" y="-75" width="8" height="150" rx="4" fill="#c4a080"/>
+    <rect x="-140" y="-35" width="8" height="70" rx="4" fill="#c8c8cb"/>
+    <rect x="-120" y="-100" width="8" height="200" rx="4" fill="#a0785a" opacity="0.6"/>
+    <rect x="-100" y="-60" width="8" height="120" rx="4" fill="#c8c8cb"/>
+    <rect x="-80" y="-80" width="8" height="160" rx="4" fill="#c4a080"/>
+    <rect x="-60" y="-45" width="8" height="90" rx="4" fill="#c8c8cb"/>
+    <rect x="-40" y="-110" width="8" height="220" rx="4" fill="#a0785a" opacity="0.5"/>
+    <rect x="-20" y="-65" width="8" height="130" rx="4" fill="#c8c8cb"/>
+    <rect x="0" y="-95" width="8" height="190" rx="4" fill="#c4a080"/>
+    <rect x="20" y="-50" width="8" height="100" rx="4" fill="#c8c8cb"/>
+    <rect x="40" y="-85" width="8" height="170" rx="4" fill="#a0785a" opacity="0.5"/>
+    <rect x="60" y="-40" width="8" height="80" rx="4" fill="#c8c8cb"/>
+    <rect x="80" y="-70" width="8" height="140" rx="4" fill="#c4a080"/>
+    <rect x="100" y="-100" width="8" height="200" rx="4" fill="#a0785a" opacity="0.6"/>
+    <rect x="120" y="-55" width="8" height="110" rx="4" fill="#c8c8cb"/>
+    <rect x="140" y="-75" width="8" height="150" rx="4" fill="#c4a080"/>
+    <rect x="160" y="-35" width="8" height="70" rx="4" fill="#c8c8cb"/>
+    <rect x="180" y="-90" width="8" height="180" rx="4" fill="#a0785a" opacity="0.7"/>
+    <rect x="200" y="-50" width="8" height="100" rx="4" fill="#c8c8cb"/>
+    <rect x="220" y="-65" width="8" height="130" rx="4" fill="#c4a080"/>
+    <rect x="240" y="-40" width="8" height="80" rx="4" fill="#c8c8cb"/>
+    <rect x="260" y="-30" width="8" height="60" rx="4" fill="#c8c8cb"/>
+  </g>
+  <!-- Data insight circles -->
+  <circle cx="200" cy="200" r="60" fill="none" stroke="#c4a080" stroke-width="1.5" stroke-opacity="0.2"/>
+  <circle cx="200" cy="200" r="40" fill="none" stroke="#c8c8cb" stroke-width="1" stroke-opacity="0.25"/>
+  <circle cx="200" cy="200" r="20" fill="#c4a080" opacity="0.06"/>
+  <circle cx="1000" cy="200" r="55" fill="none" stroke="#c4a080" stroke-width="1.5" stroke-opacity="0.2"/>
+  <circle cx="1000" cy="200" r="35" fill="none" stroke="#c8c8cb" stroke-width="1" stroke-opacity="0.25"/>
+  <circle cx="1000" cy="200" r="18" fill="#c4a080" opacity="0.06"/>
+  <circle cx="200" cy="600" r="50" fill="none" stroke="#c8c8cb" stroke-width="1" stroke-opacity="0.2"/>
+  <circle cx="200" cy="600" r="30" fill="none" stroke="#c8c8cb" stroke-width="1" stroke-opacity="0.2"/>
+  <circle cx="1000" cy="600" r="45" fill="none" stroke="#c8c8cb" stroke-width="1" stroke-opacity="0.2"/>
+  <circle cx="1000" cy="600" r="25" fill="none" stroke="#c8c8cb" stroke-width="1" stroke-opacity="0.2"/>
+  <!-- Connecting lines between circles and wave -->
+  <line x1="260" y1="200" x2="320" y2="350" stroke="#e0e0e2" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.3"/>
+  <line x1="945" y1="200" x2="880" y2="350" stroke="#e0e0e2" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.3"/>
+  <line x1="250" y1="600" x2="320" y2="450" stroke="#e0e0e2" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.3"/>
+  <line x1="955" y1="600" x2="880" y2="450" stroke="#e0e0e2" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.3"/>
+  <!-- Abstract data labels -->
+  <rect x="155" y="195" width="40" height="3" rx="1.5" fill="#c4a080" opacity="0.25"/>
+  <rect x="165" y="205" width="25" height="2" rx="1" fill="#c8c8cb" opacity="0.25"/>
+  <rect x="960" y="195" width="35" height="3" rx="1.5" fill="#c4a080" opacity="0.25"/>
+  <rect x="970" y="205" width="20" height="2" rx="1" fill="#c8c8cb" opacity="0.25"/>
+  <!-- Title -->
+  <text x="600" y="760" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#a0a0a5" letter-spacing="4" opacity="0.6">SPOTIFY WRAPPED BEHAVIORAL INSIGHTS</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- V letter -->
+  <path d="M6 4 L10 20 L8 20 L4 4 Z" fill="#0a0a0a"/>
+  <path d="M14 4 L10 20 L12 20 L16 4 Z" fill="#0a0a0a"/>
+
+  <!-- T letter -->
+  <path d="M18 4 L26 4 L26 6 L22 6 L22 20 L20 20 L20 6 L18 6 Z" fill="#0a0a0a"/>
+</svg>

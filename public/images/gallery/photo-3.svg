@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <radialGradient id="bgP3" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#fafafa"/>
+      <stop offset="100%" stop-color="#e0e0e2"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgP3)"/>
+  <!-- Portrait outline - abstract face/figure -->
+  <!-- Head oval -->
+  <ellipse cx="600" cy="280" rx="100" ry="130" fill="none" stroke="#c4a080" stroke-width="2" stroke-opacity="0.2"/>
+  <!-- Shoulders -->
+  <path d="M450,430 Q500,400 600,410 Q700,400 750,430 Q800,460 820,520 L380,520 Q400,460 450,430 Z" fill="none" stroke="#c4a080" stroke-width="1.5" stroke-opacity="0.15"/>
+  <!-- Abstract feature lines -->
+  <g opacity="0.12">
+    <!-- Eyes suggestion -->
+    <ellipse cx="560" cy="260" rx="18" ry="8" fill="none" stroke="#a0785a" stroke-width="1"/>
+    <ellipse cx="640" cy="260" rx="18" ry="8" fill="none" stroke="#a0785a" stroke-width="1"/>
+    <!-- Nose line -->
+    <line x1="600" y1="280" x2="600" y2="320" stroke="#a0785a" stroke-width="1"/>
+    <!-- Mouth -->
+    <path d="M570,340 Q600,360 630,340" fill="none" stroke="#a0785a" stroke-width="1"/>
+  </g>
+  <!-- Depth of field circles (bokeh) -->
+  <g opacity="0.08">
+    <circle cx="180" cy="200" r="30" fill="#c4a080"/>
+    <circle cx="120" cy="350" r="25" fill="#c8c8cb"/>
+    <circle cx="250" cy="500" r="35" fill="#c4a080"/>
+    <circle cx="150" cy="600" r="20" fill="#c8c8cb"/>
+    <circle cx="1020" cy="180" r="28" fill="#c4a080"/>
+    <circle cx="1080" cy="320" r="22" fill="#c8c8cb"/>
+    <circle cx="950" cy="480" r="32" fill="#c4a080"/>
+    <circle cx="1050" cy="580" r="18" fill="#c8c8cb"/>
+    <circle cx="300" cy="150" r="15" fill="#c8c8cb"/>
+    <circle cx="900" cy="600" r="24" fill="#c4a080"/>
+  </g>
+  <!-- Focus frame -->
+  <rect x="450" y="180" width="300" height="360" rx="4" fill="none" stroke="#a0785a" stroke-width="1" stroke-opacity="0.1"/>
+  <!-- Focus point cross -->
+  <g opacity="0.15">
+    <line x1="590" y1="270" x2="610" y2="270" stroke="#a0785a" stroke-width="1"/>
+    <line x1="600" y1="260" x2="600" y2="280" stroke="#a0785a" stroke-width="1"/>
+  </g>
+  <!-- Film strip holes at top and bottom -->
+  <g opacity="0.06">
+    <circle cx="100" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="200" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="300" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="400" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="500" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="600" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="700" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="800" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="900" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="1000" cy="30" r="8" fill="#a0a0a5"/>
+    <circle cx="1100" cy="30" r="8" fill="#a0a0a5"/>
+  </g>
+  <!-- Title -->
+  <text x="600" y="760" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#a0a0a5" letter-spacing="4" opacity="0.6">PHOTOGRAPHY</text>
+</svg>

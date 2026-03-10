@@ -1,0 +1,198 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import SEO from '@/components/SEO.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+
+const {
+  title = 'Victor Thuo | Design Leader & Behavioral Strategist',
+  description = 'Design leadership, behavioral strategy, and digital products that drive meaningful impact.',
+  image = '/og-image.png',
+  type = 'website',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <SEO {title} {description} {image} {canonicalURL} {type} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <Header />
+    <main class="min-h-screen relative z-10">
+      <slot />
+    </main>
+    <Footer />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Victor Thuo",
+        "url": "https://victorthuo.com",
+        "jobTitle": "Design Leader & Behavioral Strategist",
+        "sameAs": [
+          "https://www.linkedin.com/in/victorthuo/"
+        ]
+      }
+    </script>
+
+    <script>
+      const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement;
+      const ctx = canvas?.getContext('2d');
+      if (canvas && ctx) {
+        let W: number, H: number, scrollY = 0, mouseX = 0, mouseY = 0, time = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+
+        function isDarkMode() {
+          return document.documentElement.classList.contains('dark');
+        }
+        // Dark mode multiplier: slightly increase opacity for warm tones on dark bg
+        function darkOpacity(baseOpacity: number) {
+          return isDarkMode() ? baseOpacity * 1.5 : baseOpacity;
+        }
+
+        let resizeTimer: number;
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        resize();
+        window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 100) as unknown as number; });
+
+        let idleTimer: number, isIdle = false;
+        function wakeUp() { isIdle = false; clearTimeout(idleTimer); idleTimer = setTimeout(() => { isIdle = true; }, 3000) as unknown as number; }
+        window.addEventListener('mousemove', (e) => { targetMouseX = e.clientX; targetMouseY = e.clientY; wakeUp(); });
+        window.addEventListener('scroll', () => { scrollY = window.scrollY; wakeUp(); });
+        wakeUp();
+
+        const lines = [
+          { yBase: 0.25, amplitude: 40, freq: 0.003, speed: 0.0004, phase: 0, opacity: 0.04 },
+          { yBase: 0.55, amplitude: 50, freq: 0.002, speed: 0.0003, phase: 2, opacity: 0.03 },
+          { yBase: 0.80, amplitude: 35, freq: 0.004, speed: 0.0005, phase: 4, opacity: 0.035 },
+        ];
+
+        function drawLine(line: typeof lines[0]) {
+          const baseY = line.yBase * H;
+          const scrollOffset = scrollY * (0.05 + line.yBase * 0.08);
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(160, 120, 90, ${darkOpacity(line.opacity)})`;
+          ctx.lineWidth = 1;
+          for (let i = 0; i <= 80; i++) {
+            const t = i / 80;
+            const x = t * W;
+            const wave = Math.sin(x * line.freq + time * line.speed * 1000 + line.phase + scrollY * 0.001) * line.amplitude;
+            const wave2 = Math.sin(x * line.freq * 1.5 + time * line.speed * 600 + line.phase * 0.7) * (line.amplitude * 0.4);
+            const xDist = Math.abs(x - mouseX);
+            const mouseDir = (mouseX - W * 0.5) / W;
+            const mouseDist = Math.abs(mouseY - baseY);
+            const mouseInfluence = Math.max(0, 1 - mouseDist / (H * 0.4)) * 20;
+            const localMouseBend = Math.max(0, 1 - xDist / (W * 0.3)) * mouseInfluence * mouseDir;
+            const y = baseY + wave + wave2 - scrollOffset + localMouseBend;
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        const watermarks = [
+          { text: 'design', x: 0.12, y: 0.18, size: 140, parallax: 0.04, opacity: 0.025, rotation: -5 },
+          { text: 'strategy', x: 0.75, y: 0.42, size: 120, parallax: 0.06, opacity: 0.02, rotation: 3 },
+          { text: 'VT', x: 0.88, y: 0.12, size: 200, parallax: 0.03, opacity: 0.018, rotation: 0 },
+          { text: 'impact', x: 0.08, y: 0.68, size: 110, parallax: 0.05, opacity: 0.022, rotation: -2 },
+          { text: 'insight', x: 0.65, y: 0.82, size: 100, parallax: 0.07, opacity: 0.02, rotation: 4 },
+        ];
+
+        function drawWatermarks() {
+          watermarks.forEach((wm) => {
+            const baseX = wm.x * W, baseY = wm.y * H;
+            const yOffset = scrollY * wm.parallax;
+            const dx = mouseX - baseX, dy = mouseY - (baseY - yOffset);
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const maxDist = 300;
+            let pushX = 0, pushY = 0;
+            if (dist < maxDist && dist > 0) {
+              const force = (1 - dist / maxDist) * 12;
+              pushX = -(dx / dist) * force; pushY = -(dy / dist) * force;
+            }
+            const baseOp = dist < maxDist ? wm.opacity + (1 - dist / maxDist) * 0.015 : wm.opacity;
+            const op = darkOpacity(baseOp);
+            ctx.save();
+            ctx.translate(baseX + pushX, baseY - yOffset + pushY);
+            ctx.rotate(wm.rotation * Math.PI / 180);
+            ctx.font = `${wm.size}px "DM Serif Display", Georgia, serif`;
+            ctx.fillStyle = `rgba(160, 120, 90, ${op})`;
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(wm.text, 0, 0);
+            ctx.restore();
+          });
+        }
+
+        function animate(t: number) {
+          requestAnimationFrame(animate);
+          if (isIdle) return;
+          time = t;
+          ctx.clearRect(0, 0, W, H);
+          mouseX += (targetMouseX - mouseX) * 0.06;
+          mouseY += (targetMouseY - mouseY) * 0.06;
+          drawWatermarks();
+          lines.forEach(drawLine);
+        }
+        requestAnimationFrame(animate);
+      }
+
+      // Click ripple
+      document.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).closest('a, button, nav, input, textarea')) return;
+        const ripple = document.createElement('div');
+        ripple.className = 'click-ripple';
+        ripple.style.left = (e.clientX - 100) + 'px';
+        ripple.style.top = (e.clientY - 100) + 'px';
+        document.body.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+
+      // Scroll reveal
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal, .stagger').forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.85) el.classList.add('visible');
+          else observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

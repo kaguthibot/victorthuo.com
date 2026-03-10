@@ -1,0 +1,47 @@
+---
+interface Props {
+  work: {
+    slug: string;
+    data: {
+      title: string;
+      category?: string;
+      summary: string;
+      image?: string;
+      metrics?: string[];
+      featured?: boolean;
+    };
+  };
+}
+
+const { work } = Astro.props;
+const { title, category = 'default', summary, image, metrics, featured = false } = work.data;
+const slug = work.slug;
+---
+
+<a href={`/work/${slug}`} class="group block card-slide">
+  <div class="rounded-sm overflow-hidden">
+    <div class={`w-full aspect-[4/3] bg-silver-100 dark:bg-silver-900 flex items-center justify-center transition-all duration-500 group-hover:bg-silver-150 dark:group-hover:bg-silver-800 overflow-hidden`}>
+      {image ? (
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      ) : (
+        <span class="label-arch text-silver-300">{category}</span>
+      )}
+    </div>
+    <div class="pt-5">
+      <p class={`label-arch mb-3 ${category.toLowerCase() !== 'default' ? 'text-clay' : 'text-silver-400'}`}>
+        {category}
+      </p>
+      <h3 class="text-lg font-display text-silver-900 dark:text-silver-100 mb-2 group-hover:text-clay transition-colors duration-300">
+        {title}
+      </h3>
+      <p class="text-sm text-silver-400 leading-relaxed line-clamp-2" style="font-weight: 300;">
+        {summary}
+      </p>
+    </div>
+  </div>
+</a>

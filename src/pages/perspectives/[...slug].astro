@@ -1,0 +1,89 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const allPerspectives = await getCollection('perspectives');
+	return allPerspectives.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+interface Props {
+	entry: CollectionEntry<'perspectives'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Calculate reading time
+const content = entry.body;
+const wordCount = content.split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 200);
+
+// Format publish date
+const publishDate = new Date(entry.data.publishDate).toLocaleDateString('en-US', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+	<article>
+		<!-- Back Link -->
+		<div class="py-8 reveal">
+			<div class="max-w-3xl mx-auto px-6">
+				<a href="/perspectives" class="inline-flex items-center text-silver-500 dark:text-silver-400 hover:text-silver-800 dark:hover:text-silver-200 font-sans transition-colors">
+					← Perspectives
+				</a>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header class="py-12 reveal">
+			<div class="max-w-3xl mx-auto px-6">
+				<!-- Meta -->
+				<p class="text-sm font-sans text-silver-500 dark:text-silver-400 mb-6">
+					{publishDate} · {readingTime} min read
+				</p>
+
+				<!-- Title -->
+				<h1 class="text-5xl lg:text-6xl font-display font-light text-silver-900 dark:text-silver-100 mb-8 leading-tight">
+					{entry.data.title}
+				</h1>
+
+				<!-- Tags -->
+				{entry.data.tags && entry.data.tags.length > 0 && (
+					<div class="flex flex-wrap gap-2 mb-8">
+						{entry.data.tags.map((tag: string) => (
+							<span class="inline-block px-3 py-1 bg-silver-100 dark:bg-silver-800 text-silver-700 dark:text-silver-200 text-sm font-sans rounded-full">
+								{tag}
+							</span>
+						))}
+					</div>
+				)}
+			</div>
+		</header>
+
+		<!-- Content -->
+		<section class="py-16 reveal">
+			<div class="max-w-3xl mx-auto px-6 prose prose-lg">
+				<Content />
+			</div>
+		</section>
+
+		<!-- Author Footer -->
+		<section class="py-16 border-t border-silver-200 dark:border-silver-800 reveal">
+			<div class="max-w-3xl mx-auto px-6">
+				<p class="text-silver-700 dark:text-silver-300 font-sans mb-4">
+					Written by <a href="/about" class="text-silver-800 dark:text-silver-200 hover:text-clay transition-colors font-semibold">Victor Thuo</a>
+				</p>
+				<p class="text-sm text-silver-500 dark:text-silver-400 font-sans">
+					Design leader, behavioral strategist, and builder of experiences that drive business outcomes.
+				</p>
+			</div>
+		</section>
+	</article>
+</BaseLayout>

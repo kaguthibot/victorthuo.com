@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PerspectiveCard from '@/components/PerspectiveCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPerspectives = await getCollection('perspectives');
+const perspectives = allPerspectives
+	.filter((entry) => !entry.data.draft)
+	.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+---
+
+<BaseLayout
+	title="Perspectives – Victor Thuo"
+	description="Thoughts on design leadership, behavioral strategy, and building products people actually use."
+>
+	<!-- Page Header -->
+	<section class="py-20 reveal">
+		<div class="max-w-6xl mx-auto px-6">
+			<h1 class="text-5xl lg:text-6xl font-display font-light text-silver-900 dark:text-silver-100 mb-6">
+				Perspectives
+			</h1>
+			<p class="text-lg text-silver-400 font-sans max-w-2xl" style="font-weight: 300;">
+				Thoughts on design leadership, behavioral strategy, and building products people actually use.
+			</p>
+		</div>
+	</section>
+
+	<!-- Articles Grid -->
+	<section class="pb-24 reveal">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				{perspectives.map((perspective) => (
+					<PerspectiveCard perspective={perspective} />
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#f0efed"/>
+
+  <g transform="translate(600, 400)" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-165" y="-130" width="330" height="250" rx="14" stroke="#303034" stroke-width="5.5" fill="#303034" fill-opacity="0.03"/>
+    <line x1="-165" y1="-92" x2="165" y2="-92" stroke="#303034" stroke-width="3"/>
+    <circle cx="-138" cy="-111" r="8" fill="#a0785a" opacity="0.65"/>
+    <circle cx="-112" cy="-111" r="8" fill="#c4a080" opacity="0.55"/>
+    <circle cx="-86" cy="-111" r="8" fill="#c8c8cb" opacity="0.45"/>
+    <text x="-140" y="-52" font-family="monospace" font-size="20" fill="#a0785a" font-weight="700">$</text>
+    <line x1="-118" y1="-58" x2="-15" y2="-58" stroke="#a0a0a5" stroke-width="4"/>
+    <text x="-140" y="-16" font-family="monospace" font-size="20" fill="#c4a080" font-weight="700">&gt;</text>
+    <line x1="-118" y1="-22" x2="20" y2="-22" stroke="#c8c8cb" stroke-width="3.5"/>
+    <text x="-140" y="20" font-family="monospace" font-size="20" fill="#c4a080" font-weight="700">&gt;</text>
+    <line x1="-118" y1="14" x2="55" y2="14" stroke="#c8c8cb" stroke-width="3.5"/>
+    <text x="-140" y="56" font-family="monospace" font-size="20" fill="#a0785a" font-weight="700">&#x2713;</text>
+    <line x1="-112" y1="50" x2="5" y2="50" stroke="#a0785a" stroke-width="4"/>
+    <text x="-140" y="92" font-family="monospace" font-size="20" fill="#a0785a" font-weight="700">$</text>
+    <rect x="-118" y="78" width="12" height="20" fill="#a0785a" opacity="0.4"/>
+  </g>
+</svg>

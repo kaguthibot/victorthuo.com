@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#f0efed"/>
+
+  <g transform="translate(600, 385)" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="0" cy="-78" r="38" stroke="#a0785a" stroke-width="5.5" fill="#a0785a" fill-opacity="0.08"/>
+    <path d="M0 -40 L0 42" stroke="#a0785a" stroke-width="5.5"/>
+    <path d="M0 -10 L-55 -28" stroke="#a0785a" stroke-width="5"/>
+    <path d="M0 -10 L55 -28" stroke="#a0785a" stroke-width="5"/>
+    <path d="M0 42 L-28 95" stroke="#a0785a" stroke-width="5"/>
+    <path d="M0 42 L28 95" stroke="#a0785a" stroke-width="5"/>
+    <circle cx="-110" cy="-52" r="30" stroke="#7d5c42" stroke-width="4.5" fill="#7d5c42" fill-opacity="0.06"/>
+    <path d="M-110 -22 L-110 38" stroke="#7d5c42" stroke-width="4.5"/>
+    <path d="M-110 4 L-148 -8" stroke="#7d5c42" stroke-width="4"/>
+    <path d="M-110 4 L-72 -8" stroke="#7d5c42" stroke-width="4"/>
+    <path d="M-110 38 L-130 82" stroke="#7d5c42" stroke-width="4"/>
+    <path d="M-110 38 L-90 82" stroke="#7d5c42" stroke-width="4"/>
+    <circle cx="110" cy="-52" r="30" stroke="#7d5c42" stroke-width="4.5" fill="#7d5c42" fill-opacity="0.06"/>
+    <path d="M110 -22 L110 38" stroke="#7d5c42" stroke-width="4.5"/>
+    <path d="M110 4 L72 -8" stroke="#7d5c42" stroke-width="4"/>
+    <path d="M110 4 L148 -8" stroke="#7d5c42" stroke-width="4"/>
+    <path d="M110 38 L90 82" stroke="#7d5c42" stroke-width="4"/>
+    <path d="M110 38 L130 82" stroke="#7d5c42" stroke-width="4"/>
+  </g>
+</svg>
