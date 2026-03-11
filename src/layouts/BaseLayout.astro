@@ -18,6 +18,7 @@ interface Props {
   modifiedDate?: Date;
   tags?: string[];
   breadcrumbs?: BreadcrumbItem[];
+  hideCTA?: boolean;
 }
 
 const {
@@ -29,6 +30,7 @@ const {
   modifiedDate,
   tags = [],
   breadcrumbs = [],
+  hideCTA = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -67,7 +69,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <main class="min-h-screen">
       <slot />
     </main>
-    <Footer />
+    <Footer hideCTA={hideCTA} />
 
     <script type="application/ld+json">
       {
