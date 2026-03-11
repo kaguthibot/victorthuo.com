@@ -1,5 +1,24 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const photos = [
+	{ src: "/images/gallery/0ca1136a-0f5a-4223-8810-55792d4fb669_rw_3840.jpg", alt: "Photography by Victor Thuo", span: "md:col-span-2 md:row-span-2" },
+	{ src: "/images/gallery/1feffd94-6b61-400c-977f-c5943b52fcac_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/368e1298-e6fc-4416-992b-a190eed326fc_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/2a92ce90-f400-430d-87c3-cc003020dd16_rw_3840.jpg", alt: "Photography by Victor Thuo", span: "md:row-span-2" },
+	{ src: "/images/gallery/3ce97921-4538-42e0-a7b4-ce21cadb0d87_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/461fef4c-b024-4272-9a29-8926aeaf534e_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/3707e859-ceb8-4644-98a2-55fceb52acc7_rw_3840.jpg", alt: "Photography by Victor Thuo", span: "md:col-span-2" },
+	{ src: "/images/gallery/7030c2b3-6ff9-4eb1-891c-c57545f20977_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/7b507f13-f6d5-49a7-ba9e-09fdc6c9852d_rw_3840.jpg", alt: "Photography by Victor Thuo", span: "md:row-span-2" },
+	{ src: "/images/gallery/8c78b298-d03f-45cf-a9ee-280d6452d511_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/b6beaf4b-ff57-41c2-8a71-6e2109ecec6a_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/82dad4be-1e12-4a34-9a44-0326a3d920c5_rw_3840.jpg", alt: "Photography by Victor Thuo", span: "md:col-span-2" },
+	{ src: "/images/gallery/c3cebf17-3c31-4165-aced-2c4bd490c1a1_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/ccd89fd7-1324-4b5f-ac3f-c9038ebc0fb3_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+	{ src: "/images/gallery/f9806845-a205-4f0b-894b-b363882474e8_rw_3840.jpg", alt: "Photography by Victor Thuo", span: "md:col-span-2 md:row-span-2" },
+	{ src: "/images/gallery/fc1f50c6-0d37-4528-95f9-2ba59475182d_rw_1920.jpg", alt: "Photography by Victor Thuo", span: "" },
+];
 ---
 
 <BaseLayout
@@ -22,34 +41,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 	<section class="pb-24 reveal">
 		<div class="max-w-6xl mx-auto px-6">
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] gap-4">
-				<div class="md:row-span-2 rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
-					<img src="/images/gallery/photo-1.svg" alt="Urban architecture with geometric shadows" loading="lazy" class="w-full h-full object-cover" />
-				</div>
-				<div class="rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
-					<img src="/images/gallery/photo-2.svg" alt="Street scene with natural light" loading="lazy" class="w-full h-full object-cover" />
-				</div>
-				<div class="rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
-					<img src="/images/gallery/photo-3.svg" alt="Abstract textures and patterns" loading="lazy" class="w-full h-full object-cover" />
-				</div>
-				<div class="md:col-span-2 rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
-					<img src="/images/gallery/photo-4.svg" alt="Landscape with dramatic sky" loading="lazy" class="w-full h-full object-cover" />
-				</div>
-				<div class="rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
-					<img src="/images/gallery/photo-5.svg" alt="Close-up detail of natural forms" loading="lazy" class="w-full h-full object-cover" />
-				</div>
-				<div class="md:col-span-2 md:row-span-2 rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900">
-					<img src="/images/gallery/photo-6.svg" alt="Aerial perspective of urban grid" loading="lazy" class="w-full h-full object-cover" />
-				</div>
+				{photos.map((photo) => (
+					<div class={`rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900 ${photo.span}`}>
+						<img src={photo.src} alt={photo.alt} loading="lazy" class="w-full h-full object-cover" />
+					</div>
+				))}
 			</div>
-		</div>
-	</section>
-
-	<!-- Note -->
-	<section class="py-16 border-t border-silver-200 dark:border-silver-800 reveal">
-		<div class="max-w-6xl mx-auto px-6 text-center">
-			<p class="text-silver-400 font-sans text-lg" style="font-weight: 300;">
-				Photography section is being curated. Check back soon.
-			</p>
 		</div>
 	</section>
 </BaseLayout>
