@@ -18,6 +18,7 @@ const work = defineCollection({
     challenge: z.string().optional(),
     approach: z.string().optional(),
     outcome: z.string().optional(),
+    year: z.string().optional(),
   }),
 });
 

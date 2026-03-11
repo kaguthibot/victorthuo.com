@@ -98,6 +98,31 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           if (rect.top < window.innerHeight * 0.85) el.classList.add('visible');
           else observer.observe(el);
         });
+
+        // Word-by-word scroll reveal
+        const wordContainers = document.querySelectorAll('.word-reveal');
+        if (wordContainers.length) {
+          function updateWords() {
+            const viewportH = window.innerHeight;
+            wordContainers.forEach((container) => {
+              const rect = container.getBoundingClientRect();
+              const progress = Math.max(0, Math.min(1, (viewportH - rect.top) / (viewportH * 0.6)));
+              const words = container.querySelectorAll('.word');
+              const total = words.length;
+              words.forEach((word, i) => {
+                if (progress > i / total) word.classList.add('lit');
+              });
+            });
+          }
+          let ticking = false;
+          window.addEventListener('scroll', () => {
+            if (!ticking) {
+              requestAnimationFrame(() => { updateWords(); ticking = false; });
+              ticking = true;
+            }
+          }, { passive: true });
+          updateWords();
+        }
       });
     </script>
   </body>

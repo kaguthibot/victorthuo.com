@@ -2,17 +2,54 @@
 const year = new Date().getFullYear();
 ---
 
-<div class="hairline"></div>
-<footer class="py-10">
-  <div class="max-w-5xl mx-auto px-8 flex items-center justify-between">
-    <p class="label-arch text-silver-300 dark:text-silver-500">&copy; {year} Victor Thuo</p>
+<!-- CTA Section -->
+<section class="py-20 reveal">
+  <div class="max-w-4xl mx-auto px-8 text-center">
+    <h2 class="text-3xl font-display text-silver-900 dark:text-silver-100 mb-8">
+      Have a problem that needs a different kind of thinking?
+    </h2>
     <a
-      href="https://www.linkedin.com/in/victorthuo/"
+      href="https://linkedin.com/in/victorthuo"
       target="_blank"
       rel="noopener noreferrer"
-      class="label-arch text-silver-300 dark:text-silver-500 hover:text-clay transition-colors"
+      class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm"
     >
-      LinkedIn
+      Let's talk on LinkedIn
     </a>
   </div>
+</section>
+
+<!-- Utility Footer -->
+<div class="hairline"></div>
+<footer class="py-8">
+  <div class="max-w-5xl mx-auto px-8 flex items-center justify-between">
+    <p class="label-arch text-silver-300 dark:text-silver-500">&copy; {year} Victor Thuo</p>
+    <div class="flex items-center gap-6">
+      <span class="label-arch text-silver-300 dark:text-silver-500" id="local-time"></span>
+      <a
+        href="https://www.linkedin.com/in/victorthuo/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="label-arch text-silver-300 dark:text-silver-500 hover:text-clay transition-colors"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
 </footer>
+
+<script>
+  function updateLocalTime() {
+    const el = document.getElementById('local-time');
+    if (!el) return;
+    const time = new Date().toLocaleTimeString('en-US', {
+      timeZone: 'America/New_York',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    });
+    el.textContent = `Local time \u2014 ${time} ET`;
+  }
+  updateLocalTime();
+  setInterval(updateLocalTime, 60000);
+</script>

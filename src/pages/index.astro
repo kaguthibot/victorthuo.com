@@ -8,6 +8,9 @@ const featuredWork = allWork
 	.filter((entry) => entry.data.featured === true)
 	.sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
 	.slice(0, 3);
+
+const heroSubText = "From AI platforms adopted by thousands to enterprise tools that people actually want to use. I bring design rigor, technical clarity, and business thinking to complex problems.";
+const povText = "Design has a business fluency problem. Design craft is the answer, not the casualty.";
 ---
 
 <BaseLayout title="Victor Thuo – Experience Design & AI Product Strategy" description="I design the products, platforms, and strategies that turn ambitious ideas into measurable outcomes. Design rigor, technical clarity, and business thinking for complex problems.">
@@ -18,8 +21,10 @@ const featuredWork = allWork
 			<h1 class="text-5xl lg:text-7xl font-display text-silver-950 dark:text-silver-100 leading-[1.08] mb-10">
 				Good design makes value tangible, Tastefully
 			</h1>
-			<p class="text-lg text-silver-400 leading-relaxed mb-12 max-w-xl mx-auto" style="font-weight: 300;">
-				From AI platforms adopted by thousands to enterprise tools that people actually want to use. I bring design rigor, technical clarity, and business thinking to complex problems.
+			<p class="text-lg text-silver-400 leading-relaxed mb-12 max-w-xl mx-auto word-reveal" style="font-weight: 300;">
+				{heroSubText.split(/\s+/).map((word, i) => (
+					<span class="word" style={`transition-delay: ${i * 30}ms`}>{word} </span>
+				))}
 			</p>
 			<a href="/work" class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm inline-flex items-center gap-3">
 				View work
@@ -32,8 +37,10 @@ const featuredWork = allWork
 	<section class="py-20 reveal">
 		<div class="max-w-2xl mx-auto px-8 text-center">
 			<div class="w-8 h-px bg-clay mx-auto mb-8"></div>
-			<p class="text-xl font-display italic text-silver-500 dark:text-silver-400 leading-relaxed" style="font-weight: 400;">
-				Design has a business fluency problem. Design craft is the answer, not the casualty.
+			<p class="text-xl font-display italic text-silver-500 dark:text-silver-400 leading-relaxed word-reveal" style="font-weight: 400;">
+				{povText.split(/\s+/).map((word, i) => (
+					<span class="word" style={`transition-delay: ${i * 40}ms`}>{word} </span>
+				))}
 			</p>
 			<div class="w-8 h-px bg-clay mx-auto mt-8"></div>
 		</div>
@@ -112,18 +119,4 @@ const featuredWork = allWork
 		</div>
 	</section>
 
-	<!-- CTA -->
-	<section class="py-20 reveal">
-		<div class="max-w-4xl mx-auto px-8 text-center">
-			<h2 class="text-3xl font-display text-silver-900 dark:text-silver-100 mb-8">Have a problem that needs a different kind of thinking?</h2>
-			<a
-				href="https://linkedin.com/in/victorthuo"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm"
-			>
-				Let's talk on LinkedIn
-			</a>
-		</div>
-	</section>
 </BaseLayout>

@@ -29,12 +29,13 @@ const breadcrumbs = [
 			<p class="text-lg text-silver-400 font-sans max-w-2xl" style="font-weight: 300;">
 				Case studies in experience design, digital strategy, and behavior change.
 			</p>
+			<p class="label-arch text-silver-300 dark:text-silver-500 mt-4">{sortedWork.length} case studies</p>
 		</div>
 	</section>
 
-	<!-- Category Filters -->
+	<!-- Category Filters + View Toggle -->
 	<section class="pb-12 reveal">
-		<div class="max-w-6xl mx-auto px-6">
+		<div class="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
 			<div class="flex flex-wrap gap-3">
 				{categories.map((category) => (
 					<button
@@ -49,11 +50,36 @@ const breadcrumbs = [
 					</button>
 				))}
 			</div>
+			<div class="flex items-center gap-1">
+				<button
+					id="view-grid"
+					class="view-toggle p-2 text-silver-900 dark:text-silver-100 transition-colors"
+					aria-label="Grid view"
+					aria-pressed="true"
+				>
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+						<rect x="3" y="3" width="7" height="7" rx="1" />
+						<rect x="14" y="3" width="7" height="7" rx="1" />
+						<rect x="3" y="14" width="7" height="7" rx="1" />
+						<rect x="14" y="14" width="7" height="7" rx="1" />
+					</svg>
+				</button>
+				<button
+					id="view-list"
+					class="view-toggle p-2 text-silver-400 transition-colors"
+					aria-label="List view"
+					aria-pressed="false"
+				>
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+						<path stroke-linecap="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+					</svg>
+				</button>
+			</div>
 		</div>
 	</section>
 
 	<!-- Work Grid -->
-	<section class="pb-24 reveal">
+	<section class="pb-24 reveal" id="workGridSection">
 		<div class="max-w-6xl mx-auto px-6">
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16" id="workGrid">
 				{sortedWork.map((work) => (
@@ -64,15 +90,44 @@ const breadcrumbs = [
 			</div>
 		</div>
 	</section>
+
+	<!-- Work List -->
+	<section class="pb-24 hidden" id="workListSection">
+		<div class="max-w-6xl mx-auto px-6">
+			<div class="border-t border-silver-150 dark:border-silver-800">
+				{sortedWork.map((work) => (
+					<a
+						href={`/work/${work.slug}`}
+						data-category={work.data.category}
+						class="group flex items-center justify-between py-5 px-4 border-b border-silver-150 dark:border-silver-800 slide-hover transition-colors"
+					>
+						<span class="font-display text-lg text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">
+							{work.data.title}
+						</span>
+						<div class="flex items-center gap-8 shrink-0 ml-4">
+							<span class="label-arch text-silver-400 hidden sm:inline">
+								{work.data.category}
+							</span>
+							<span class="label-arch text-silver-300 dark:text-silver-500 tabular-nums w-10 text-right">
+								{work.data.year || ''}
+							</span>
+						</div>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
 </BaseLayout>
 
 <script>
 	const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-	const cards = document.querySelectorAll<HTMLElement>('#workGrid [data-category]');
+	const gridCards = document.querySelectorAll<HTMLElement>('#workGrid [data-category]');
+	const listRows = document.querySelectorAll<HTMLElement>('#workListSection [data-category]');
 
 	const activeClasses = ['bg-silver-900', 'dark:bg-silver-100', 'text-white', 'dark:text-silver-900'];
 	const inactiveClasses = ['bg-silver-100', 'dark:bg-silver-900', 'text-silver-900', 'dark:text-silver-100'];
 
+	// Category filtering — targets both grid and list
 	buttons.forEach((button) => {
 		button.addEventListener('click', () => {
 			const category = button.getAttribute('data-category');
@@ -84,14 +139,42 @@ const breadcrumbs = [
 			button.classList.remove(...inactiveClasses);
 			button.classList.add(...activeClasses);
 
-			cards.forEach((card) => {
-				const cardCategory = card.getAttribute('data-category');
-				if (category === 'All' || cardCategory === category) {
-					card.classList.remove('hidden');
+			[...gridCards, ...listRows].forEach((item) => {
+				const itemCategory = item.getAttribute('data-category');
+				if (category === 'All' || itemCategory === category) {
+					item.classList.remove('hidden');
 				} else {
-					card.classList.add('hidden');
+					item.classList.add('hidden');
 				}
 			});
 		});
 	});
+
+	// View toggle
+	const gridBtn = document.getElementById('view-grid');
+	const listBtn = document.getElementById('view-list');
+	const gridSection = document.getElementById('workGridSection');
+	const listSection = document.getElementById('workListSection');
+
+	function setView(view: string) {
+		if (!gridSection || !listSection || !gridBtn || !listBtn) return;
+		if (view === 'grid') {
+			gridSection.classList.remove('hidden');
+			listSection.classList.add('hidden');
+			gridBtn.className = 'view-toggle p-2 text-silver-900 dark:text-silver-100 transition-colors';
+			listBtn.className = 'view-toggle p-2 text-silver-400 transition-colors';
+			gridBtn.setAttribute('aria-pressed', 'true');
+			listBtn.setAttribute('aria-pressed', 'false');
+		} else {
+			gridSection.classList.add('hidden');
+			listSection.classList.remove('hidden');
+			listBtn.className = 'view-toggle p-2 text-silver-900 dark:text-silver-100 transition-colors';
+			gridBtn.className = 'view-toggle p-2 text-silver-400 transition-colors';
+			listBtn.setAttribute('aria-pressed', 'true');
+			gridBtn.setAttribute('aria-pressed', 'false');
+		}
+	}
+
+	gridBtn?.addEventListener('click', () => setView('grid'));
+	listBtn?.addEventListener('click', () => setView('list'));
 </script>
