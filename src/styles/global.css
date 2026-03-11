@@ -179,7 +179,6 @@
 
   /* Word-by-word scroll reveal */
   .word-reveal .word {
-    display: inline-block;
     opacity: 0.15;
     transition: opacity 0.4s ease;
   }
