@@ -1,12 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PerspectiveCard from '@/components/PerspectiveCard.astro';
+import FeaturedPerspectiveCard from '@/components/FeaturedPerspectiveCard.astro';
 import { getCollection } from 'astro:content';
 
 const allPerspectives = await getCollection('perspectives');
 const perspectives = allPerspectives
 	.filter((entry) => !entry.data.draft)
 	.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const [featured, ...rest] = perspectives;
 
 const breadcrumbs = [
 	{ name: 'Home', url: 'https://victorthuo.com' },
@@ -31,14 +34,25 @@ const breadcrumbs = [
 		</div>
 	</section>
 
-	<!-- Articles Grid -->
-	<section class="pb-24 reveal">
-		<div class="max-w-6xl mx-auto px-6">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-				{perspectives.map((perspective) => (
-					<PerspectiveCard perspective={perspective} />
-				))}
+	<!-- Featured Article -->
+	{featured && (
+		<section class="pb-12 reveal">
+			<div class="max-w-6xl mx-auto px-6">
+				<FeaturedPerspectiveCard perspective={featured} />
 			</div>
-		</div>
-	</section>
+		</section>
+	)}
+
+	<!-- Remaining Articles -->
+	{rest.length > 0 && (
+		<section class="pb-24 reveal">
+			<div class="max-w-6xl mx-auto px-6">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					{rest.map((perspective) => (
+						<PerspectiveCard perspective={perspective} />
+					))}
+				</div>
+			</div>
+		</section>
+	)}
 </BaseLayout>

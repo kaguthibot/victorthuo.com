@@ -19,9 +19,16 @@ const breadcrumbs = [
 			<h1 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-4">
 				Victor Thuo
 			</h1>
-			<p class="text-2xl text-silver-400 font-display" style="font-weight: 300;">
+			<p class="text-2xl text-silver-400 font-display mb-8" style="font-weight: 300;">
 				Experience Design & AI Product Strategy
 			</p>
+			<div class="flex flex-wrap gap-2">
+				{['Business Consulting', 'Healthcare', 'Financial Services & FinTech', 'Automotive', 'Consumer Products', 'Enterprise Technology'].map(
+					(sector) => (
+						<span class="tag">{sector}</span>
+					)
+				)}
+			</div>
 		</div>
 	</section>
 
@@ -82,86 +89,6 @@ const breadcrumbs = [
 						The person using your internal tool at 3pm just used a consumer app at noon. They know what good feels like. Complexity is real, but it's not an excuse. I design enterprise experiences with the same rigor and craft, because clarity scales and confusion compounds.
 					</p>
 				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- How I Work -->
-	<section class="py-16 border-y border-silver-200 dark:border-silver-800 reveal">
-		<div class="max-w-4xl mx-auto px-6">
-			<p class="label-arch text-silver-400 mb-4">Process</p>
-			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
-				How I Work
-			</h2>
-			<div class="space-y-6 text-silver-400 font-sans leading-relaxed" style="font-weight: 300;">
-				<p>
-					I start by understanding the real problem. Not the one in the brief, but the one that emerges when you talk to the people closest to the work. I spend time with stakeholders, end users, and the engineers who'll build it. That's where the useful information lives.
-				</p>
-
-				<p>
-					Then I move fast and stay precise. Prototype early, test with real people, measure what matters. I work across product, engineering, and leadership. Not in a handoff, but in the room together. Design decisions are better when they account for technical constraints and business realities from the start.
-				</p>
-
-				<p>
-					The work doesn't end at launch. I also think through adoption: onboarding, communication, rollout strategy. A product that ships but sits unused is a product that failed. I design for outcomes, not deliverables.
-				</p>
-			</div>
-		</div>
-	</section>
-
-	<!-- Sectors -->
-	<section class="py-16 reveal">
-		<div class="max-w-4xl mx-auto px-6">
-			<p class="label-arch text-silver-400 mb-4">Industries</p>
-			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
-				Sectors
-			</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				{['Business Consulting', 'Healthcare', 'Financial Services & FinTech', 'Automotive', 'Consumer Products', 'Enterprise Technology'].map(
-					(sector) => (
-						<div class="border-l border-clay pl-4 py-2">
-							<p class="text-silver-900 dark:text-silver-100 font-sans font-medium">{sector}</p>
-						</div>
-					)
-				)}
-			</div>
-		</div>
-	</section>
-
-	<!-- Recommendations -->
-	<section class="py-16 reveal">
-		<div class="max-w-4xl mx-auto px-6">
-			<p class="label-arch text-silver-400 mb-4">Testimonials</p>
-			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-8">
-				What others say
-			</h2>
-			<div class="space-y-8">
-				<blockquote class="border-l border-clay pl-6 py-4">
-					<p class="text-lg text-silver-400 font-sans mb-2 italic" style="font-weight: 300;">
-						"Victor is a rare design leader who understands business as well as he understands design. He doesn't just design beautiful interfaces, he designs for adoption and impact. Working with him transformed how we think about product strategy."
-					</p>
-					<p class="text-sm font-sans text-silver-600">
-						[Recommendation from LinkedIn]
-					</p>
-				</blockquote>
-
-				<blockquote class="border-l border-clay pl-6 py-4">
-					<p class="text-lg text-silver-400 font-sans mb-2 italic" style="font-weight: 300;">
-						"Victor brings a strategic lens to every decision, grounded in behavioral research and business acumen. He's as comfortable facilitating executive alignment as he is diving into detailed interaction design. His work directly moved the needle on our key metrics."
-					</p>
-					<p class="text-sm font-sans text-silver-600">
-						[Recommendation from LinkedIn]
-					</p>
-				</blockquote>
-
-				<blockquote class="border-l border-clay pl-6 py-4">
-					<p class="text-lg text-silver-400 font-sans mb-2 italic" style="font-weight: 300;">
-						"Collaborating with Victor was a masterclass in how to think about enterprise UX. He got the complexity, but never let it compromise the experience. His team loved working with him, and our users noticed the difference immediately."
-					</p>
-					<p class="text-sm font-sans text-silver-600">
-						[Recommendation from LinkedIn]
-					</p>
-				</blockquote>
 			</div>
 		</div>
 	</section>

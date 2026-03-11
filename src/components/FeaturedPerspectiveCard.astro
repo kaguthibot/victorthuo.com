@@ -1,0 +1,54 @@
+---
+interface Props {
+  perspective: {
+    slug: string;
+    body: string;
+    data: {
+      title: string;
+      description: string;
+      publishDate: Date | string;
+      readingTime?: string;
+      tags?: string[];
+    };
+  };
+}
+
+const { perspective } = Astro.props;
+const { title, description, publishDate, readingTime, tags = [] } = perspective.data;
+const slug = perspective.slug;
+
+const calculatedReadingTime = readingTime || (perspective.body ? `${Math.ceil(perspective.body.split(/\s+/).length / 200)} min read` : '3 min read');
+
+const formatDate = (date: Date | string): string => {
+  const d = typeof date === 'string' ? new Date(date) : date;
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+};
+---
+
+<a href={`/perspectives/${slug}`} class="group block">
+  <div class="py-10 border-t border-silver-150 dark:border-silver-800">
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-3 mb-5">
+        {tags.map((tag) => (
+          <span class="label-arch text-clay">{tag}</span>
+        ))}
+      </div>
+    )}
+
+    <h3 class="text-2xl md:text-3xl font-display text-silver-900 dark:text-silver-100 mb-4 group-hover:text-clay transition-colors duration-300">
+      {title}
+    </h3>
+
+    <p class="text-silver-400 mb-5 max-w-2xl" style="font-weight: 300;">
+      {description}
+    </p>
+
+    <div class="flex items-center gap-4 text-xs text-silver-300">
+      <time datetime={typeof publishDate === 'string' ? publishDate : publishDate.toISOString()}>
+        {formatDate(publishDate)}
+      </time>
+      <span class="w-1 h-1 rounded-full bg-silver-300"></span>
+      <span>{calculatedReadingTime}</span>
+    </div>
+  </div>
+</a>

@@ -28,7 +28,7 @@ const isActive = (href: string) => {
         {navItems.map((item) => (
           <a
             href={item.href}
-            class={`label-arch transition-colors duration-300 ${
+            class={`nav-label transition-colors duration-300 ${
               isActive(item.href)
                 ? 'text-clay'
                 : 'text-silver-400 hover:text-silver-700 dark:hover:text-silver-200'
@@ -108,7 +108,7 @@ const isActive = (href: string) => {
         {navItems.map((item) => (
           <a
             href={item.href}
-            class={`label-arch transition-colors ${
+            class={`nav-label transition-colors ${
               isActive(item.href)
                 ? 'text-clay'
                 : 'text-silver-400 hover:text-silver-700 dark:hover:text-silver-200'
