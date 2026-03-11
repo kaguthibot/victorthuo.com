@@ -40,13 +40,45 @@ const photos = [
 	<!-- Masonry Grid -->
 	<section class="pb-24 reveal">
 		<div class="max-w-6xl mx-auto px-6">
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] gap-4">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[200px] gap-4" id="gallery">
 				{photos.map((photo) => (
-					<div class={`rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900 ${photo.span}`}>
-						<img src={photo.src} alt={photo.alt} loading="lazy" class="w-full h-full object-cover" />
+					<div class={`gallery-item relative rounded-sm overflow-hidden bg-silver-100 dark:bg-silver-900 ${photo.span}`}>
+						<img
+							src={photo.src}
+							alt={photo.alt}
+							loading="lazy"
+							draggable="false"
+							class="w-full h-full object-cover pointer-events-none select-none"
+						/>
+						<div class="absolute inset-0" aria-hidden="true"></div>
 					</div>
 				))}
 			</div>
 		</div>
 	</section>
 </BaseLayout>
+
+<style>
+	.gallery-item img {
+		-webkit-user-drag: none;
+		-khtml-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none;
+		-webkit-touch-callout: none;
+	}
+</style>
+
+<script>
+	const gallery = document.getElementById('gallery');
+	if (gallery) {
+		gallery.addEventListener('contextmenu', (e) => {
+			if (e.target instanceof HTMLImageElement || e.target instanceof HTMLDivElement) {
+				e.preventDefault();
+			}
+		});
+		gallery.addEventListener('dragstart', (e) => {
+			e.preventDefault();
+		});
+	}
+</script>
