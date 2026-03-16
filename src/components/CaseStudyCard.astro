@@ -20,8 +20,8 @@ const firstMetric = metrics && metrics.length > 0 ? metrics[0] : null;
 ---
 
 <a href={`/work/${slug}`} class="group block card-tilt" data-tilt>
-  <div class="rounded-sm overflow-hidden">
-    <div class={`w-full aspect-[4/3] bg-silver-100 dark:bg-silver-900 flex items-center justify-center transition-all duration-500 group-hover:bg-silver-150 dark:group-hover:bg-silver-800 overflow-hidden relative`}>
+  <div class="rounded-md overflow-hidden border border-silver-150 dark:border-silver-800 bg-white dark:bg-silver-900/50 transition-colors duration-300">
+    <div class="w-full aspect-[4/3] bg-silver-100 dark:bg-silver-900 flex items-center justify-center overflow-hidden relative">
       {image ? (
         <img
           src={image}
@@ -38,7 +38,7 @@ const firstMetric = metrics && metrics.length > 0 ? metrics[0] : null;
         </span>
       )}
     </div>
-    <div class="pt-5">
+    <div class="px-5 py-5">
       <span class={`mb-3 ${category.toLowerCase() !== 'default' ? 'tag-clay' : 'tag'}`}>
         {category}
       </span>
