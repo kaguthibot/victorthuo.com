@@ -20,7 +20,7 @@
 
   .dark body {
     color: #c8c8cb;
-    background-color: #141312;
+    background-color: #0a0a0b;
   }
 
   h1, h2, h3 {
@@ -99,6 +99,39 @@
 .prose pre code { background-color: transparent; padding: 0; }
 
 @layer components {
+  /* ─────────────────────────────────────────────
+     BACKGROUND PATTERNS (inspired by 21st.dev Grid Background)
+     ───────────────────────────────────────────── */
+
+  /* Dot grid — subtle depth texture */
+  .bg-dot-grid {
+    position: relative;
+  }
+  .bg-dot-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: radial-gradient(circle, #c8c8cb 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .dark .bg-dot-grid::before {
+    background-image: radial-gradient(circle, #303034 0.5px, transparent 0.5px);
+    opacity: 0.5;
+  }
+
+  /* Gradient fade mask for dot grid — fades out at bottom */
+  .bg-dot-grid-fade::before {
+    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+  }
+
+  /* ─────────────────────────────────────────────
+     TYPOGRAPHY COMPONENTS
+     ───────────────────────────────────────────── */
+
   /* Label typography */
   .label-arch {
     font-size: 0.65rem;
@@ -115,9 +148,22 @@
     font-weight: 500;
   }
 
+  /* Hero headline — cinematic scale */
+  .hero-headline {
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 400;
+  }
+
+  /* ─────────────────────────────────────────────
+     DIVIDERS & LINKS
+     ───────────────────────────────────────────── */
+
   /* Hairline divider */
   .hairline { height: 0.5px; background-color: #e0e0e2; }
-  .dark .hairline { background-color: #303034; }
+  .dark .hairline { background-color: #1c1c1f; }
 
   /* Subtle link hover */
   .link-subtle {
@@ -127,28 +173,63 @@
   }
   .link-subtle:hover { border-bottom-color: #a0785a; color: #a0785a; }
 
+  /* ─────────────────────────────────────────────
+     HOVER INTERACTIONS
+     ───────────────────────────────────────────── */
+
   /* Slide hover for capability rows */
-  .slide-hover { transition: background-color 0.4s ease, border-color 0.4s ease; }
-  .slide-hover:hover { background-color: rgba(160, 120, 90, 0.03); }
+  .slide-hover {
+    transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .slide-hover:hover {
+    background-color: rgba(160, 120, 90, 0.03);
+    transform: translateY(-2px);
+  }
   .dark .slide-hover:hover { background-color: rgba(160, 120, 90, 0.06); }
 
-  /* Card vertical slide + shadow lift */
-  .card-slide { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
-  .card-slide:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
-  .dark .card-slide:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+  /* Card vertical slide + shadow lift — enhanced with 3D perspective */
+  .card-slide {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .card-slide:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+  .dark .card-slide:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
 
-  /* Containers */
+  /* 3D tilt card (inspired by 21st.dev InteractiveCard) — JS sets --tilt-x/--tilt-y */
+  .card-tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, box-shadow 0.4s ease;
+    will-change: transform;
+  }
+  .card-tilt:hover {
+    box-shadow: 0 16px 50px rgba(0,0,0,0.1);
+  }
+  .dark .card-tilt:hover {
+    box-shadow: 0 16px 50px rgba(0,0,0,0.35);
+  }
+
+  /* ─────────────────────────────────────────────
+     CONTAINERS & SPACING
+     ───────────────────────────────────────────── */
+
   .container-narrow { max-width: 48rem; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
   .container-wide { max-width: 80rem; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
-
-  /* Section spacing */
   .section { padding-top: 5rem; padding-bottom: 5rem; }
   .section-sm { padding-top: 3rem; padding-bottom: 3rem; }
 
-  /* Metric */
+  /* ─────────────────────────────────────────────
+     TAGS & METRICS
+     ───────────────────────────────────────────── */
+
   .metric { font-family: "DM Serif Display", Georgia, serif; font-size: 2.25rem; line-height: 2.5rem; color: #a0785a; }
 
-  /* Tag */
   .tag {
     display: inline-block;
     font-size: 0.75rem;
@@ -162,7 +243,6 @@
   }
   .dark .tag { border-color: #303034; }
 
-  /* Category pill — clay accent variant */
   .tag-clay {
     display: inline-block;
     font-size: 0.65rem;
@@ -179,62 +259,92 @@
     border-color: rgba(160, 120, 90, 0.25);
   }
 
-  /* Word-by-word scroll reveal */
-  .word-reveal .word {
-    opacity: 0.15;
-    transition: opacity 0.4s ease;
-  }
-  .word-reveal .word.lit {
-    opacity: 1;
-  }
+  /* ─────────────────────────────────────────────
+     ANIMATIONS — HERO (inspired by 21st.dev BlurReveal)
+     ───────────────────────────────────────────── */
 
-  /* Hero headline — cinematic scale */
-  .hero-headline {
-    font-family: "DM Serif Display", Georgia, serif;
-    font-size: clamp(2.75rem, 5vw, 4.25rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    font-weight: 400;
-  }
-
-  /* Hero stagger entrance — line-by-line slide up */
+  /* Hero blur-in stagger — word-by-word blur reveal */
   .hero-stagger {
     opacity: 0;
-    transform: translateY(24px);
-    animation: heroReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: calc(var(--stagger, 0) * 100ms + 200ms);
+    filter: blur(8px);
+    transform: translateY(20px);
+    animation: heroBlurReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--stagger, 0) * 120ms + 300ms);
   }
 
-  @keyframes heroReveal {
+  @keyframes heroBlurReveal {
     to {
       opacity: 1;
+      filter: blur(0px);
       transform: translateY(0);
     }
   }
 
-  /* Scroll reveal — directional slide up */
+  /* ─────────────────────────────────────────────
+     ANIMATIONS — SCROLL REVEAL (inspired by 21st.dev BlurReveal)
+     ───────────────────────────────────────────── */
+
+  /* Blur reveal on scroll — elements start blurred and slide up */
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: blur(6px);
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal.visible {
     opacity: 1;
+    filter: blur(0px);
     transform: translateY(0);
   }
 
-  /* Stagger children — slide up */
+  /* Stagger children — blur slide up */
   .stagger > * {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    filter: blur(4px);
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .stagger.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
-  .stagger.visible > *:nth-child(2) { transition-delay: 80ms; opacity: 1; transform: translateY(0); }
-  .stagger.visible > *:nth-child(3) { transition-delay: 160ms; opacity: 1; transform: translateY(0); }
-  .stagger.visible > *:nth-child(4) { transition-delay: 240ms; opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; filter: blur(0); transform: translateY(0); }
+  .stagger.visible > *:nth-child(2) { transition-delay: 100ms; opacity: 1; filter: blur(0); transform: translateY(0); }
+  .stagger.visible > *:nth-child(3) { transition-delay: 200ms; opacity: 1; filter: blur(0); transform: translateY(0); }
+  .stagger.visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; filter: blur(0); transform: translateY(0); }
+
+  /* Word-by-word scroll reveal */
+  .word-reveal .word {
+    opacity: 0.15;
+    filter: blur(2px);
+    transition: opacity 0.4s ease, filter 0.4s ease;
+  }
+  .word-reveal .word.lit {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  /* ─────────────────────────────────────────────
+     GLOW ACCENT — subtle radial glow behind hero
+     ───────────────────────────────────────────── */
+  .glow-accent {
+    position: relative;
+  }
+  .glow-accent::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(160, 120, 90, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .dark .glow-accent::after {
+    background: radial-gradient(ellipse at center, rgba(160, 120, 90, 0.08) 0%, transparent 70%);
+  }
 }
 
 /* Masonry gallery using CSS columns */
@@ -262,25 +372,29 @@
   border-radius: 2px;
   overflow: hidden;
   background-color: #f4f4f5;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.masonry-item:hover {
+  transform: scale(1.02);
 }
 
 .dark .masonry-item {
   background-color: #1c1c1f;
 }
 
-/* View Transitions — smooth crossfade */
+/* View Transitions — smooth crossfade with blur */
 ::view-transition-old(root) {
-  animation: fade-out 0.2s ease-in forwards;
+  animation: vt-fade-out 0.2s ease-in forwards;
 }
 ::view-transition-new(root) {
-  animation: fade-in-vt 0.3s ease-out;
+  animation: vt-fade-in 0.35s ease-out;
 }
-@keyframes fade-out {
-  to { opacity: 0; }
+@keyframes vt-fade-out {
+  to { opacity: 0; filter: blur(4px); }
 }
-@keyframes fade-in-vt {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes vt-fade-in {
+  from { opacity: 0; filter: blur(4px); transform: translateY(4px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
 /* Reduced motion — accessibility */
@@ -288,20 +402,30 @@
   .hero-stagger {
     animation: none;
     opacity: 1;
+    filter: none;
     transform: none;
   }
   .reveal {
     transition-duration: 0.01ms;
     transform: none;
+    filter: none;
     opacity: 1;
   }
   .stagger > * {
     transition-duration: 0.01ms;
     transform: none;
+    filter: none;
     opacity: 1;
   }
-  .card-slide:hover {
+  .card-slide:hover,
+  .card-tilt:hover {
     transform: none;
+  }
+  .masonry-item:hover {
+    transform: none;
+  }
+  .word-reveal .word {
+    filter: none;
   }
   ::view-transition-old(root),
   ::view-transition-new(root) {

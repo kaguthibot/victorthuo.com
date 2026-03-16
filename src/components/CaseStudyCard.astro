@@ -19,7 +19,7 @@ const slug = work.slug;
 const firstMetric = metrics && metrics.length > 0 ? metrics[0] : null;
 ---
 
-<a href={`/work/${slug}`} class="group block card-slide">
+<a href={`/work/${slug}`} class="group block card-tilt" data-tilt>
   <div class="rounded-sm overflow-hidden">
     <div class={`w-full aspect-[4/3] bg-silver-100 dark:bg-silver-900 flex items-center justify-center transition-all duration-500 group-hover:bg-silver-150 dark:group-hover:bg-silver-800 overflow-hidden relative`}>
       {image ? (
@@ -27,7 +27,7 @@ const firstMetric = metrics && metrics.length > 0 ? metrics[0] : null;
           src={image}
           alt={title}
           loading="lazy"
-          class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"
         />
       ) : (
         <span class="label-arch text-silver-300">{category}</span>

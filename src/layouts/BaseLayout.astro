@@ -137,8 +137,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         }
       }
 
+      // 3D tilt cards — inspired by 21st.dev InteractiveCard
+      function initTiltCards() {
+        const cards = document.querySelectorAll('[data-tilt]');
+        cards.forEach((card) => {
+          const el = card as HTMLElement;
+          el.addEventListener('mousemove', (e: MouseEvent) => {
+            const rect = el.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            const tiltX = y * -8; // degrees
+            const tiltY = x * 8;
+            el.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
+          });
+          el.addEventListener('mouseleave', () => {
+            el.style.transform = '';
+          });
+        });
+      }
+
       // Run on initial load and after View Transitions navigation
-      document.addEventListener('astro:page-load', initScrollReveal);
+      document.addEventListener('astro:page-load', () => {
+        initScrollReveal();
+        initTiltCards();
+      });
     </script>
   </body>
 </html>

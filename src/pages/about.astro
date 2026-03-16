@@ -5,6 +5,21 @@ const breadcrumbs = [
 	{ name: 'Home', url: 'https://victorthuo.com' },
 	{ name: 'About', url: 'https://victorthuo.com/about' },
 ];
+
+const philosophyItems = [
+	{
+		heading: "Design is a business discipline.",
+		body: "If the product doesn't move a metric, the design didn't work. I tie every decision, from information architecture to interaction patterns, to adoption rates, error reduction, and time to value. Beautiful work that doesn't drive outcomes is a portfolio piece, not a strategy."
+	},
+	{
+		heading: "Start with the system, not the screen.",
+		body: "The best solutions come from understanding how the whole thing fits together: the technology, the people, the organizational dynamics. I think in systems and design in details. That's how you get products that are elegant to use and practical to build."
+	},
+	{
+		heading: "Enterprise users deserve great design.",
+		body: "The person using your internal tool at 3pm just used a consumer app at noon. They know what good feels like. Complexity is real, but it's not an excuse. I design enterprise experiences with the same rigor and craft, because clarity scales and confusion compounds."
+	}
+];
 ---
 
 <BaseLayout
@@ -14,9 +29,9 @@ const breadcrumbs = [
 	hideCTA
 >
 	<!-- Hero Section -->
-	<section class="py-20 reveal">
-		<div class="max-w-4xl mx-auto px-6">
-			<h1 class="text-4xl lg:text-5xl font-display text-silver-900 dark:text-silver-100 mb-4">
+	<section class="py-20 bg-dot-grid bg-dot-grid-fade relative reveal">
+		<div class="max-w-4xl mx-auto px-6 relative z-10">
+			<h1 class="text-5xl lg:text-6xl font-display text-silver-900 dark:text-silver-100 mb-4">
 				Victor Thuo
 			</h1>
 			<p class="text-2xl text-silver-500 dark:text-silver-400 font-display italic mb-4">
@@ -55,39 +70,23 @@ const breadcrumbs = [
 		</div>
 	</section>
 
-	<!-- Design Philosophy -->
+	<!-- Design Philosophy — word-by-word reveal for headings -->
 	<section class="py-16 reveal">
 		<div class="max-w-4xl mx-auto px-6">
 			<h2 class="text-4xl font-display text-silver-900 dark:text-silver-100 mb-16">
 				Design Philosophy
 			</h2>
-			<div class="space-y-16">
-				<div>
-					<h3 class="text-2xl lg:text-3xl font-display text-silver-900 dark:text-silver-100 mb-4">
-						Design is a business discipline.
-					</h3>
-					<p class="text-silver-500 dark:text-silver-400 font-sans leading-relaxed max-w-2xl">
-						If the product doesn't move a metric, the design didn't work. I tie every decision, from information architecture to interaction patterns, to adoption rates, error reduction, and time to value. Beautiful work that doesn't drive outcomes is a portfolio piece, not a strategy.
-					</p>
-				</div>
-
-				<div>
-					<h3 class="text-2xl lg:text-3xl font-display text-silver-900 dark:text-silver-100 mb-4">
-						Start with the system, not the screen.
-					</h3>
-					<p class="text-silver-500 dark:text-silver-400 font-sans leading-relaxed max-w-2xl">
-						The best solutions come from understanding how the whole thing fits together: the technology, the people, the organizational dynamics. I think in systems and design in details. That's how you get products that are elegant to use and practical to build.
-					</p>
-				</div>
-
-				<div>
-					<h3 class="text-2xl lg:text-3xl font-display text-silver-900 dark:text-silver-100 mb-4">
-						Enterprise users deserve great design.
-					</h3>
-					<p class="text-silver-500 dark:text-silver-400 font-sans leading-relaxed max-w-2xl">
-						The person using your internal tool at 3pm just used a consumer app at noon. They know what good feels like. Complexity is real, but it's not an excuse. I design enterprise experiences with the same rigor and craft, because clarity scales and confusion compounds.
-					</p>
-				</div>
+			<div class="space-y-20 stagger">
+				{philosophyItems.map((item) => (
+					<div>
+						<h3 class="text-2xl lg:text-3xl font-display text-silver-900 dark:text-silver-100 mb-4">
+							{item.heading}
+						</h3>
+						<p class="text-silver-500 dark:text-silver-400 font-sans leading-relaxed max-w-2xl">
+							{item.body}
+						</p>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
@@ -105,9 +104,12 @@ const breadcrumbs = [
 				href="https://linkedin.com/in/victorthuo"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-block text-silver-800 dark:text-silver-200 font-sans font-medium border-b-2 border-clay hover:text-clay transition-colors"
+				class="inline-flex items-center gap-3 bg-silver-900 dark:bg-silver-100 text-white dark:text-silver-900 px-8 py-4 rounded-sm font-medium text-sm hover:bg-clay dark:hover:bg-clay dark:hover:text-white transition-colors duration-300"
 			>
-				Let's talk on LinkedIn →
+				Let's talk on LinkedIn
+				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+				</svg>
 			</a>
 		</div>
 	</section>
