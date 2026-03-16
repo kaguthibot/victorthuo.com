@@ -32,9 +32,11 @@ export default {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       fontSize: {
-        '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.015em' }],
-        '6xl': ['3.75rem', { lineHeight: '1.05', letterSpacing: '-0.015em' }],
-        '7xl': ['4.5rem', { lineHeight: '1.02', letterSpacing: '-0.02em' }],
+        '5xl': ['3rem', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
+        '6xl': ['3.75rem', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
+        '7xl': ['4.5rem', { lineHeight: '1.02', letterSpacing: '-0.03em' }],
+        '8xl': ['5.5rem', { lineHeight: '1.0', letterSpacing: '-0.035em' }],
+        '9xl': ['7rem', { lineHeight: '0.95', letterSpacing: '-0.04em' }],
       },
       maxWidth: {
         'content': '65ch',

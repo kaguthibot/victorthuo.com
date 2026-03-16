@@ -8,18 +8,24 @@ const year = new Date().getFullYear();
 ---
 
 {!hideCTA && (
-  <section class="py-20 reveal">
+  <section class="py-32 lg:py-40 bg-clay-50 dark:bg-silver-900/30 reveal">
     <div class="max-w-4xl mx-auto px-8 text-center">
-      <h2 class="text-3xl font-display text-silver-900 dark:text-silver-100 mb-8">
-        Have a problem that needs a different kind of thinking?
+      <h2 class="text-4xl lg:text-6xl font-display text-silver-900 dark:text-silver-100 mb-6 leading-tight">
+        Have a problem that needs<br class="hidden sm:inline" /> a different kind of thinking?
       </h2>
+      <p class="text-lg text-silver-500 dark:text-silver-400 mb-10 max-w-xl mx-auto">
+        I'm always interested in hard problems — where good design, clear strategy, and smart execution all have to come together.
+      </p>
       <a
         href="https://linkedin.com/in/victorthuo"
         target="_blank"
         rel="noopener noreferrer"
-        class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm"
+        class="inline-flex items-center gap-3 bg-silver-900 dark:bg-silver-100 text-white dark:text-silver-900 px-8 py-4 rounded-sm font-medium text-sm hover:bg-clay dark:hover:bg-clay dark:hover:text-white transition-colors duration-300"
       >
         Let's talk on LinkedIn
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+        </svg>
       </a>
     </div>
   </section>
@@ -45,17 +51,21 @@ const year = new Date().getFullYear();
 </footer>
 
 <script>
-  function updateLocalTime() {
-    const el = document.getElementById('local-time');
-    if (!el) return;
-    const time = new Date().toLocaleTimeString('en-US', {
-      timeZone: 'America/New_York',
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true,
-    });
-    el.textContent = `Local time \u2014 ${time} ET`;
+  function initFooter() {
+    function updateLocalTime() {
+      const el = document.getElementById('local-time');
+      if (!el) return;
+      const time = new Date().toLocaleTimeString('en-US', {
+        timeZone: 'America/New_York',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      });
+      el.textContent = `Local time \u2014 ${time} ET`;
+    }
+    updateLocalTime();
+    setInterval(updateLocalTime, 60000);
   }
-  updateLocalTime();
-  setInterval(updateLocalTime, 60000);
+
+  document.addEventListener('astro:page-load', initFooter);
 </script>

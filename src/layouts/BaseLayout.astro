@@ -2,6 +2,7 @@
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import SEO from '@/components/SEO.astro';
+import { ViewTransitions } from 'astro:transitions';
 import '@/styles/global.css';
 
 interface BreadcrumbItem {
@@ -48,6 +49,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           document.documentElement.classList.remove('dark');
         }
       })();
+      document.addEventListener('astro:after-swap', function() {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -62,6 +71,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       rel="stylesheet"
     />
     <SEO {title} {description} {image} {canonicalURL} {type} {publishDate} {modifiedDate} {tags} {breadcrumbs} />
+    <ViewTransitions />
     <title>{title}</title>
   </head>
   <body>
@@ -88,8 +98,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </script>
 
     <script>
-      // Scroll reveal
-      document.addEventListener('DOMContentLoaded', () => {
+      // Scroll reveal — compatible with View Transitions
+      function initScrollReveal() {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
@@ -125,7 +135,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           }, { passive: true });
           updateWords();
         }
-      });
+      }
+
+      // Run on initial load and after View Transitions navigation
+      document.addEventListener('astro:page-load', initScrollReveal);
     </script>
   </body>
 </html>

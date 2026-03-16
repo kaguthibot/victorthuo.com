@@ -9,48 +9,53 @@ const featuredWork = allWork
 	.sort((a, b) => (a.data.order || 999) - (b.data.order || 999))
 	.slice(0, 3);
 
-const heroSubText = "From AI platforms adopted by thousands to enterprise tools that people actually want to use. I bring design rigor, technical clarity, and business thinking to complex problems.";
+const heroLines = [
+	"Good design makes",
+	"value tangible,",
+	"Tastefully"
+];
+const heroSubText = "From AI platforms adopted by thousands to enterprise tools that people actually want to use — design rigor, technical clarity, and business thinking for complex problems.";
 const povText = "Design has a business fluency problem. Design craft is the answer, not the casualty.";
 ---
 
 <BaseLayout title="Victor Thuo – Experience Design & AI Product Strategy" description="I design the products, platforms, and strategies that turn ambitious ideas into measurable outcomes. Design rigor, technical clarity, and business thinking for complex problems.">
-	<!-- Hero — centered -->
-	<section class="min-h-[88vh] flex items-center justify-center px-8">
-		<div class="max-w-3xl text-center reveal">
-			<p class="label-arch text-clay mb-8">Experience Design & AI Product Strategy</p>
-			<h1 class="text-5xl lg:text-7xl font-display text-silver-950 dark:text-silver-100 leading-[1.08] mb-10">
-				Good design makes value tangible, Tastefully
-			</h1>
-			<p class="text-lg text-silver-400 leading-relaxed mb-12 max-w-xl mx-auto word-reveal" style="font-weight: 300;">
-				{heroSubText.split(/\s+/).map((word, i) => (
-					<span class="word" style={`transition-delay: ${i * 30}ms`}>{word} </span>
-				))}
-			</p>
-			<a href="/work" class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm inline-flex items-center gap-3">
-				View work
-				<span class="w-8 h-px bg-silver-300 inline-block"></span>
-			</a>
-		</div>
-	</section>
+	<!-- Hero — asymmetric, cinematic -->
+	<section class="min-h-[90vh] flex items-end pb-20 lg:pb-28 px-8">
+		<div class="max-w-6xl mx-auto w-full">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
+				<!-- Left: Headline -->
+				<div class="lg:col-span-8">
+					<p class="label-arch text-clay mb-6 hero-stagger" style="--stagger: 0">Experience Design & AI Product Strategy</p>
+					<h1 class="hero-headline text-silver-950 dark:text-silver-100">
+						{heroLines.map((line, i) => (
+							<span class="hero-line block hero-stagger" style={`--stagger: ${i + 1}`}>
+								{line}
+							</span>
+						))}
+					</h1>
+					<p class="font-display italic text-xl lg:text-2xl text-silver-400 dark:text-silver-500 mt-8 max-w-xl leading-relaxed hero-stagger" style="--stagger: 4">
+						{povText}
+					</p>
+				</div>
 
-	<!-- POV — contained, no full-width color -->
-	<section class="py-20 reveal">
-		<div class="max-w-2xl mx-auto px-8 text-center">
-			<div class="w-8 h-px bg-clay mx-auto mb-8"></div>
-			<p class="text-xl font-display italic text-silver-500 dark:text-silver-400 leading-relaxed word-reveal" style="font-weight: 400;">
-				{povText.split(/\s+/).map((word, i) => (
-					<span class="word" style={`transition-delay: ${i * 40}ms`}>{word} </span>
-				))}
-			</p>
-			<div class="w-8 h-px bg-clay mx-auto mt-8"></div>
+				<!-- Right: Descriptor + CTA -->
+				<div class="lg:col-span-4 lg:pl-8 lg:border-l lg:border-silver-200 dark:lg:border-silver-800">
+					<p class="text-silver-500 dark:text-silver-400 leading-relaxed mb-8 hero-stagger" style="font-weight: 400; --stagger: 5">
+						{heroSubText}
+					</p>
+					<a href="/work" class="group inline-flex items-center gap-4 text-silver-800 dark:text-silver-200 font-medium text-sm hero-stagger" style="--stagger: 6">
+						View selected work
+						<span class="w-8 h-px bg-silver-300 dark:bg-silver-600 inline-block transition-all duration-300 group-hover:w-12 group-hover:bg-clay"></span>
+					</a>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- Capabilities — asymmetric grid -->
-	<section class="py-24">
+	<section class="py-28">
 		<div class="max-w-5xl mx-auto px-8">
-			<div class="text-center mb-20 reveal">
-				<p class="label-arch text-silver-400 mb-4">What I do</p>
+			<div class="mb-20 reveal">
 				<h2 class="text-4xl lg:text-5xl font-display text-silver-900 dark:text-silver-100">Capabilities</h2>
 			</div>
 
@@ -58,19 +63,19 @@ const povText = "Design has a business fluency problem. Design craft is the answ
 				<div class="col-span-12 md:col-span-7 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
 					<div class="flex items-baseline justify-between mb-4">
 						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Experience Design</h3>
-						<span class="text-xs font-mono text-silver-300 tracking-wide">01</span>
+						<span class="font-display italic text-clay text-lg">7,800+ users</span>
 					</div>
-					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
-						Complex tools don't have to feel complex. I design enterprise products, from AI platforms to developer portals, that are clear on day one and powerful on day hundred. 7,800+ users adopted. 2X productivity gains delivered.
+					<p class="text-silver-500 dark:text-silver-400 leading-relaxed">
+						Complex tools don't have to feel complex. I design enterprise products, from AI platforms to developer portals, that are clear on day one and powerful on day hundred.
 					</p>
 				</div>
 
 				<div class="col-span-12 md:col-span-5 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
 					<div class="flex items-baseline justify-between mb-4">
 						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Digital Strategy</h3>
-						<span class="text-xs font-mono text-silver-300 tracking-wide">02</span>
+						<span class="font-display italic text-clay text-lg">5X growth</span>
 					</div>
-					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
+					<p class="text-silver-500 dark:text-silver-400 leading-relaxed">
 						Strategy without execution is a slide deck. I connect product vision to engineering reality and business outcomes, then build the roadmap to get there.
 					</p>
 				</div>
@@ -78,9 +83,9 @@ const povText = "Design has a business fluency problem. Design craft is the answ
 				<div class="col-span-12 md:col-span-5 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
 					<div class="flex items-baseline justify-between mb-4">
 						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Behavior Change</h3>
-						<span class="text-xs font-mono text-silver-300 tracking-wide">03</span>
+						<span class="font-display italic text-clay text-lg">2X adoption</span>
 					</div>
-					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
+					<p class="text-silver-500 dark:text-silver-400 leading-relaxed">
 						Great design gets ignored if it asks people to change without giving them a reason. I study how people actually make decisions and design around it. Reducing friction, not adding training.
 					</p>
 				</div>
@@ -88,10 +93,10 @@ const povText = "Design has a business fluency problem. Design craft is the answ
 				<div class="col-span-12 md:col-span-7 py-10 px-8 border border-silver-150 dark:border-silver-800 rounded-sm slide-hover group">
 					<div class="flex items-baseline justify-between mb-4">
 						<h3 class="text-2xl font-display text-silver-900 dark:text-silver-100 group-hover:text-clay transition-colors duration-300">Product Adoption</h3>
-						<span class="text-xs font-mono text-silver-300 tracking-wide">04</span>
+						<span class="font-display italic text-clay text-lg">31K migrated</span>
 					</div>
-					<p class="text-silver-400 leading-relaxed" style="font-weight: 300;">
-						A launch is just the beginning. I build the onboarding, rollout, and support that turn a pilot into a company standard. 31,000 users migrated. 90% cost reductions realized. 89% audience reached.
+					<p class="text-silver-500 dark:text-silver-400 leading-relaxed">
+						A launch is just the beginning. I build the onboarding, rollout, and support that turn a pilot into a company standard. 90% cost reductions realized. 89% audience reached.
 					</p>
 				</div>
 			</div>
@@ -101,8 +106,7 @@ const povText = "Design has a business fluency problem. Design craft is the answ
 	<!-- Featured Work -->
 	<section class="py-32">
 		<div class="max-w-5xl mx-auto px-8">
-			<div class="text-center mb-20 reveal">
-				<p class="label-arch text-silver-400 mb-4">Case studies</p>
+			<div class="mb-20 reveal">
 				<h2 class="text-4xl lg:text-5xl font-display text-silver-900 dark:text-silver-100">Selected work</h2>
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-16 stagger mb-12">
@@ -111,9 +115,9 @@ const povText = "Design has a business fluency problem. Design craft is the answ
 				))}
 			</div>
 			<div class="text-center">
-				<a href="/work" class="link-subtle text-silver-800 dark:text-silver-200 font-medium text-sm inline-flex items-center gap-3">
+				<a href="/work" class="group inline-flex items-center gap-4 text-silver-800 dark:text-silver-200 font-medium text-sm">
 					View all work
-					<span class="w-8 h-px bg-silver-300 inline-block"></span>
+					<span class="w-8 h-px bg-silver-300 dark:bg-silver-600 inline-block transition-all duration-300 group-hover:w-12 group-hover:bg-clay"></span>
 				</a>
 			</div>
 		</div>
